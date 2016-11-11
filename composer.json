@@ -1,0 +1,11 @@
+{
+    "name": "pfinal/leafphp",
+    "require": {
+        "pfinal/leaf": "~1.2"
+    },
+    "autoload": {
+        "psr-4": {
+          "": ["src\\"]
+        }
+    }
+}

@@ -1,0 +1,20 @@
+#!/usr/bin/env php
+<?php
+
+set_time_limit(0);
+
+define('COMMAND_PATH', __DIR__);
+
+$loader = require_once __DIR__ . '/vendor/autoload.php';
+
+use Leaf\Application;
+use Leaf\Generator\BundleCommand;
+use Symfony\Component\Console\Application as ConsoleApplication;
+
+$app = new Application();
+require __DIR__ . '/config/app.php';
+$app->init();
+
+$console = new ConsoleApplication();
+$console->add(new BundleCommand());
+$console->run();
