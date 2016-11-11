@@ -1,7 +1,7 @@
 {
     "name": "pfinal/leafphp",
     "require": {
-        "pfinal/leaf": "~1.2"
+        "pfinal/leaf": "~2.0"
     },
     "autoload": {
         "psr-4": {
