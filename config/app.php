@@ -8,6 +8,7 @@ $app->register(new \Leaf\Provider\DatabaseServiceProvider());
 $app->register(new \Leaf\Provider\TwigServiceProvider());
 $app->register(new \Leaf\Provider\SessionProvider());
 $app->register(new \Leaf\Provider\CaptchaProvider());
+$app->register(new \Leaf\Provider\CacheProvider());
 
 //中间件
 $app['cors'] = 'Middleware\CorsMiddleware';
