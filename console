@@ -10,6 +10,7 @@ $loader = require_once __DIR__ . '/vendor/autoload.php';
 use Leaf\Application;
 use Leaf\Generator\BundleCommand;
 use Leaf\Generator\EntityCommand;
+use Leaf\Generator\CurdCommand;
 use Symfony\Component\Console\Application as ConsoleApplication;
 
 $app = new Application();
@@ -19,4 +20,5 @@ $app->init();
 $console = new ConsoleApplication();
 $console->add(new BundleCommand());
 $console->add(new EntityCommand());
+$console->add(new CurdCommand());
 $console->run();
