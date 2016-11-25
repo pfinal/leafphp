@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Admin{% endblock %}</title>
+
+    <link href="{{ asset('static/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset("static/art-dialog/css/ui-dialog.css") }}" rel="stylesheet"/>
+    <link href="{{ asset('static/admin/css/layout.css') }}" rel="stylesheet">
+    <link href="{{ asset('static/leaf/css/leaf.css') }}" rel="stylesheet">
+    {% block stylesheet %}
+    {% endblock %}
+
+</head>
+<body>
+{% block body %}
+
+    {% block header %}
+        <nav class="layout-header">
+            <div class="container layout-width">
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <div class="pull-left">
+                            <a href="{{ url('/') }}" class="logo">
+                                <span class="glyphicon glyphicon-dashboard"></span> 仪表盘
+                            </a>
+                        </div>
+
+                        <div class="pull-right">
+
+                        <span class="account-info">
+
+                            <span>管理员</span>
+                            <a class="login-out" href="{{ url('logout') }}">退出</a>
+                        </span>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </nav>
+    {% endblock %}
+
+    {% block content %}
+        <section class="container layout-main layout-width">
+            <div class="row">
+                <div class="col-md-12 display-table">
+
+                    <!--左菜单区域-->
+                    <div class="layout-menu">
+                        {% block contentLeft %}
+                            <ul class="main-menu">
+                                <li>
+                                    <span class="menu-item">
+                                        <i class="icon glyphicon glyphicon-th-large"></i>
+                                        <i class="icon pull-right"></i>
+                                        <span>主菜单1</span>
+                                    </span>
+                                </li>
+
+                                <li class="level-2">
+                                    <a class="menu-item" href="">
+                                        <i class="icon"></i>
+                                        <i class="icon pull-right"><span class="badge">8</span></i>
+                                        <span>子菜单a</span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        {% endblock %}
+                    </div>
+                    <!-- 左菜单区域结束-->
+
+                    <!--右内容区域-->
+                    <div class="layout-content">
+                        {% block contentRight %}{% endblock %}
+                    </div>
+                    <!--右内容区域结束-->
+
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </section>
+    {% endblock %}
+
+    {% block footer %}
+        <footer class="layout-footer">
+            <div class="container layout-width">
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul class="links">
+                            <li><p class="copyright">Copyright.All Rights Reserved.</p></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    {% endblock %}
+
+{% endblock %}
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="{{ asset('static/ie8/html5shiv.min.js') }}"></script>
+<script src="{{ asset('static/ie8/respond.min.js') }}"></script>
+<![endif]-->
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="{{ asset('static/jquery/jquery.min.js') }}"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="{{ asset('static/bootstrap/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('static/art-dialog/dist/dialog-min.js') }}"></script>
+<script src="{{ asset('static/leaf/leaf.js') }}"></script>
+
+{% block javascript %}
+{% endblock %}
+
+</body>
+</html>

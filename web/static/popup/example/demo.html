@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title></title>
+</head>
+<body>
+
+<style>
+    .demo-container {
+        padding-top: 50px;
+        padding-left: 340px;
+    }
+
+    .mobile {
+        width: 320px;
+        height: 480px;
+        border: 1px solid #666;
+        border-radius: 2px;
+        position: absolute;
+        margin-left: -330px;
+    }
+
+    .mobile iframe {
+        width: 100%;
+        height: 100%;
+    }
+    .code-box{
+        border: 1px solid #666;
+        margin-right: 10px;
+        height: 480px;
+        overflow: auto;
+    }
+
+    .cate-heading {
+        background-color: #EEE;
+        padding: 8px;
+    }
+</style>
+<div class="demo-container">
+    <div class="mobile">
+        <iframe src="./default.html" frameborder="0"></iframe>
+    </div>
+    <div class="code-box">
+    <div class="cate-heading">核心方法</div>
+    <pre>
+
+    $.popup({
+            title: "", // string
+            content: "内容...", // string | jq对象
+            button: [//[]空数组时没有按钮
+                {
+                    "text": "是",
+                    "callback": function (event, popup) {
+                        popup.close()
+                    }
+                },
+                {
+                    "text": "否",
+                    "callback": function (event, popup) {
+                        popup.close()
+                    }
+                }
+            ],
+            width: " 90%", //"300px" | 50% 设置主体宽度度
+            height: "auto", //"300px" | 50%\ auto
+            modal: false, //true 模态 | false 非模态（点击遮罩不移除弹出层）
+            className: "",//添加自定义样式名
+            callback: {
+                "clickCallbackExample": function (event, popup) {//在属于popup内部dom上自定义data-callback="clickCallbackExample"属性,点击后会回调执行这里
+                }
+            }
+        }).show()
+    </pre>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>文件上传demo</title>
+
+
+    <!-- Bootstrap -->
+    <link href="../admin/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../admin/css/layout.css" rel="stylesheet">
+    <link href="../admin/css/style.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="../admin/js/html5shiv.min.js"></script>
+    <script src="../admin/js/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="../admin/js/jquery-1.11.2.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../admin/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../admin/js/layout.js"></script>
+
+    <script src="../rain/base.js"></script>
+
+</head>
+<body>
+
+<nav class="layout-header">
+    <div class="container layout-width">
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="pull-left">
+                    Demo
+                </div>
+
+                <div class="pull-right">
+
+                    <span class="account-info">
+                        <span>公司名称</span>
+                        <a href=""><span class="icon-inbox"><span class="icon-red-dot"></span></span></a>
+                        <a class="login-out" href="/rain-demo/web/demo.php/logout">退出</a>
+                    </span>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</nav>
+
+
+<section class="container layout-main layout-width">
+    <div class="row">
+        <div class="col-md-12">
+
+            <!--左菜单区域-->
+            <div class="layout-menu pull-left">
+                <ul class="main-menu">
+                    <li>
+        <span class="menu-item">
+            <i class="icon glyphicon glyphicon-th-large"></i>
+            <i class="icon pull-right"></i>
+            <span>演示</span>
+        </span>
+                    </li>
+
+                    <li class="level-2 ">
+                        <a class="menu-item" href="/rain-demo/web/demo.php/user">
+                            <i class="icon"></i>
+                            <i class="icon pull-right"></i>
+                            <span>CRUD完整示例</span>
+                        </a>
+                    </li>
+
+                    <li class="level-2 active">
+                        <a class="menu-item" href="/rain-demo/web/demo.php/file-upload">
+                            <i class="icon"></i>
+                            <i class="icon pull-right"></i>
+                            <span>文件上传</span>
+                        </a>
+                    </li>
+
+                </ul>                </div>
+            <!-- 左菜单区域结束-->
+
+            <!--右内容区域-->
+            <div class="layout-content pull-left">
+
+                <!-- 按钮样式  -->
+                <link rel="stylesheet" href="../jquery-file-upload/css/jquery.fileupload.css">
+                <!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
+                <script src="../jquery-file-upload/js/vendor/jquery.ui.widget.js"></script>
+                <!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
+                <script src="../jquery-file-upload/js/jquery.iframe-transport.js"></script>
+                <!-- The basic File Upload plugin -->
+                <script src="../jquery-file-upload/js/jquery.fileupload.js"></script>
+
+                <!-- jquery-file-upload 作为目标文件上传插件的文件输入域 -->
+    <span class="btn btn-success btn-sm fileinput-button">
+		<span>上传...</span><!--选择文件...-->
+		<input class="jquery-file-upload" type="file" name="files[]" multiple>
+	</span>
+
+                <!-- 进度条 -->
+                <div id="jquery-file-upload-progress" class="progress progress-striped active" style="display: none;">
+                    <div class="progress-bar progress-bar-info"></div>
+                </div>
+
+                <div class="show-images"></div>
+
+                <script>
+                    /*jslint unparam: true */
+                    /*global window, $ */
+                    $(function () {
+                        'use strict';
+                        $('.jquery-file-upload').fileupload({
+                            url: "http://localhost/rain-demo/web/demo.php/do-upload",	//接收文件上传action
+                            dataType: 'json',
+                            done: function (e, data) {
+
+                                //上传完成后 隐藏进度条
+                                $("#jquery-file-upload-progress").hide();
+
+                                //上传失败
+                                if (data.result.status == 0) {
+                                    //错误消息
+                                    var message = data.result.message;
+
+                                    alert(message);
+
+                                    return;
+                                }
+
+                                //上传成功
+                                $.each(data.result.files, function (index, file) {
+                                    //上传成功返回file对象:
+                                    //name mnzqbb.jpg
+                                    //size 23429
+                                    //type image/jpeg
+                                    //url  http://localhost/FileUpload/1/server/php/files/mnzqbb%20%286%29.jpg
+                                    //thumbnailUrl  数组 [http://localhost/FileUpload/1/server/php/files/thumbnail/mnzqbb%20%286%29.jpg]
+
+                                    $("<img>").attr("src", 'http://localhost' + file.url).css({"maxWidth": "300px"}).appendTo($(".show-images"));
+
+                                });
+                            },
+                            progressall: function (e, data) {
+                                //显示进度条
+                                $("#jquery-file-upload-progress").show();
+                                var progress = parseInt(data.loaded / data.total * 100, 10);
+                                $('#jquery-file-upload-progress .progress-bar').css('width', progress + '%');
+                            }
+                        }).prop('disabled', !$.support.fileInput).parent().addClass($.support.fileInput ? undefined : 'disabled');
+                    });
+
+                </script>
+
+
+            </div>
+            <!--右内容区域结束-->
+
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</section>
+
+
+<footer class=" layout-footer">
+    <div class="container layout-width">
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="links">
+                    <li><a href="" target="_blank">关于我们</a></li>
+                    <li><a href="" target="_blank">服务协议</a></li>
+                    <li><a href="" target="_blank">运营规范</a></li>
+                    <li><a href="" target="_blank">客服中心</a></li>
+                    <li><a href="" target="_blank">在线客服</a></li>
+                    <li><p class="copyright">Copyright.All Rights Reserved.</p></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

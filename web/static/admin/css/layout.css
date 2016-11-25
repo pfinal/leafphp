@@ -1,0 +1,456 @@
+/* @author 邹义良 http://www.pfinal.cn */
+body {
+    background-color: #e7e8eb;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif, "Microsoft YaHei";
+}
+
+input, textarea, button, a {
+    outline: 0 none !important;
+}
+
+a {
+    color: #222;
+    outline: none;
+}
+
+a:hover {
+    color: #222;
+}
+
+a[href] {
+    cursor: pointer;
+}
+
+ul, li {
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    list-style: none;
+}
+
+.mt10 {
+    margin-top: 10px;
+}
+
+.mt15 {
+    margin-top: 15px;
+}
+
+.mt20 {
+    margin-top: 20px;
+}
+
+.pr15 {
+    padding-right: 15px;
+}
+
+/*ui-tips*/
+.ui-tips {
+    margin: 10px 0;
+    padding: 10px;
+    color: #626f7b;
+    border-radius: 4px;
+}
+
+.ui-tips .icon {
+    color: #00aeef;
+}
+
+/*ui-small-box*/
+.ui-small-box {
+    width: 250px;
+    text-align: center;
+    font-size: 16px;
+    display: inline-block;
+    margin: 15px 5px;
+}
+
+.ui-small-box a {
+    padding: 25px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.ui-small-box .num {
+    font-size: 35px;
+    display: block;
+}
+
+.small-box-green {
+    background-color: #60d295;
+    color: #fff;
+}
+
+.small-box-green:hover {
+    background-color: #58c88d;
+}
+
+.small-box-blue {
+    background-color: #7cbae5;
+    color: #fff;
+
+}
+
+.small-box-blue:hover {
+    background-color: #73afd9;
+}
+
+.small-box-yellow {
+    background-color: #f39c12;;
+    color: #fff;
+}
+
+.small-box-yellow:hover {
+    background-color: #da8c10;;
+}
+
+/*搜索表单*/
+.form-search {
+    background-color: #f4f5f9;
+    padding: 15px;
+}
+
+.form-search .form-group {
+    margin-right: 20px;
+    padding-bottom: 10px;
+}
+
+.form-search label {
+    margin-right: 10px;
+}
+
+/*表格中的超链接*/
+table a {
+    color: #459ae9;
+}
+
+table a:hover {
+    color: #459ae9;
+    text-decoration: underline;
+}
+
+/*==========页面内容宽度==========*/
+.layout-width {
+    max-width: 1200px;
+    min-width: 768px;
+}
+
+/*==========头部==========*/
+.layout-header {
+    min-height: 60px;
+    min-width: 768px;
+    background-color: #fff;
+    border-top: 4px solid #44b549;
+    border-bottom: 1px solid #d9dadc;
+    line-height: 60px;
+}
+
+.layout-header .logo {
+    font-size: 20px;
+    text-decoration: none;
+}
+
+/*去掉默认槽宽(gutter) 默认的col有15px padding*/
+.layout-header .container .row .col-md-12 {
+    padding: 0;
+}
+
+.layout-header .account-info > * {
+    margin-left: 10px;
+    text-decoration: none;
+}
+
+.my-red-dot {
+    width: 7px;
+    height: 7px;
+    display: inline-block;
+    position: absolute;
+    top: -3px;
+    right: -3px;
+    background-color: red;
+    border-radius: 5px;
+    font-size: 8px;
+}
+
+/*top menu*/
+
+.layout-header .top-menu {
+    margin-left: 92px;
+}
+
+.layout-header .top-menu > ul {
+    padding-top: 10px;
+}
+
+.layout-header .top-menu li {
+    float: left;
+    position: relative;
+    height: 50px;
+}
+
+.layout-header .top-menu .nav-child-menu {
+    position: absolute;
+    width: 150px;
+    z-index: 100;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-top: 0;
+    display: none;
+    left: -1px;
+    top: 50px;
+}
+
+.layout-header .top-menu li:hover .nav-child-menu {
+    display: block;
+}
+
+.layout-header .top-menu .nav-child-menu a {
+    display: block;
+    line-height: 40px;
+    height: 40px;
+    text-decoration: none;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.layout-header .top-menu .nav-child-menu a:hover {
+    background: #f0f0f0;
+}
+
+.layout-header .top-menu > ul > li > a {
+    display: block;
+    padding-left: 8px;
+    padding-right: 8px;
+    line-height: 40px;
+    height: 40px;
+}
+
+.layout-header .top-menu > ul > li > a.active {
+    background-color: #f9f9f9;
+    border-bottom: 4px solid #44b549;
+    font-weight: bold;
+    /*padding: 12px 8px 8px 8px;*/
+    text-decoration: none;
+}
+
+.layout-header .top-menu > ul > li > a.active:hover {
+    border-bottom: 4px solid #44b549;
+}
+
+.layout-header .top-menu > ul > li:hover > a {
+    text-decoration: none;
+    border-bottom: 4px solid #9a9da6;
+}
+
+.layout-header .top-menu > ul > li:hover > a.active {
+    text-decoration: none;
+    border-bottom: 4px solid #44b549;
+}
+
+/*==========底部==========*/
+.layout-header .login-out {
+    margin-left: 20px;
+    padding-left: 10px;
+    border-left: 1px solid #e7e7eb;
+}
+
+.layout-footer {
+    min-width: 768px;
+    background-color: #b8b9b9;
+    min-height: 60px;
+    line-height: 60px;
+    color: #f1f1f1;
+}
+
+.layout-footer .links li {
+    float: left;
+    margin-right: 10px;
+}
+
+.layout-footer a {
+    color: #f1f1f1;
+}
+
+.layout-footer a:hover {
+    color: #f1f1f1;
+}
+
+/*==========中间主要区域==========*/
+.display-table {
+    display: table;
+    width: 100%
+}
+
+.layout-main {
+    margin: 20px auto; /*36px*/
+    background-color: #fff;
+}
+
+/*去掉默认槽宽(gutter) 默认的col有15px padding*/
+.layout-main > .row > .col-md-12 {
+    padding: 0;
+}
+
+/*==========左菜单区域==========*/
+.layout-menu {
+    width: 210px;
+    min-height: 500px;
+}
+
+/*菜单顶部padding*/
+.layout-menu .main-menu {
+    padding-top: 18px;
+}
+
+/*菜单项*/
+.layout-menu .main-menu .menu-item {
+    display: block;
+    height: 34px;
+    line-height: 34px;
+    padding-left: 30px;
+    text-decoration: none;
+}
+
+/*左图标*/
+.layout-menu .main-menu .menu-item .icon {
+    padding-right: 5px;
+    font-size: 16px;
+    color: #b2b2b2;
+}
+
+/*不可点击菜单项*/
+.layout-menu .main-menu span.menu-item {
+    color: #8d8d8d;
+}
+
+/*菜单项hover*/
+.layout-menu .main-menu a:hover {
+    background-color: #f4f5f9;
+}
+
+/*激活项*/
+.layout-menu .main-menu .active a, .layout-menu .main-menu .active .icon {
+    background-color: #44b549;
+    color: #fff;
+}
+
+/*二级菜单*/
+.layout-menu .main-menu .level-2 a {
+    padding-left: 50px;
+}
+
+/*==========内容区顶部==========*/
+.layout-content {
+    border-left: 1px solid #e7e7eb;
+    display: table-cell;
+    width: 100%;
+}
+
+/*标题*/
+.layout-content .page-title {
+    padding: 15px 0 0 30px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/*选项卡*/
+.layout-content .top-nav li {
+    float: left;
+    margin-bottom: -1px;
+    position: relative;
+}
+
+.layout-content .top-nav li a, .layout-content .top-nav li span {
+    display: inline-block;
+    height: 40px;
+    padding: 10px 30px;
+    border-bottom: 1px solid #e7e7eb;
+    text-decoration: none;
+}
+
+.layout-content .top-nav li a:hover {
+    border-bottom: 3px solid #9a9da6;
+}
+
+.layout-content .top-nav li.active a,
+.layout-content .top-nav li.active span,
+.layout-content .top-nav li.active a:hover {
+    border-bottom: 3px solid #44b549;
+}
+
+/*子选项卡*/
+.content-top-sub {
+    background-color: #f4f5f9;
+    padding-left: 30px;
+}
+
+.layout-content .sub-nav li {
+    float: left;
+    position: relative;
+    line-height: 35px;
+}
+
+.layout-content .sub-nav .line {
+    color: #d9dadc;
+    margin: 0 10px;
+}
+
+.layout-content .sub-nav li a {
+    color: #797979;
+    display: inline-block;
+    height: 35px;
+    text-decoration: none;
+}
+
+.layout-content .sub-nav li.active a,
+.layout-content .sub-nav li.active span,
+.layout-content .sub-nav li.active a:hover {
+    color: #222;
+}
+
+.layout-content .sub-nav li a:hover {
+    color: #222;
+    text-decoration: underline;
+}
+
+/*选项卡下边线*/
+.layout-content .content-top {
+    border-bottom: 1px solid #e7e7eb;
+}
+
+/*主内容区*/
+.layout-content .content-main {
+    margin-top: 15px;
+    padding-bottom: 20px;
+}
+
+/*分页*/
+.pagination {
+    padding: 3px;
+    text-align: center;
+    padding-right: 15px;
+}
+
+.pagination a, .pagination span {
+    border: #ddd 1px solid;
+    text-decoration: none;
+    color: #666;
+    padding: 5px 10px;
+    margin-left: 4px;
+}
+
+.pagination a:hover {
+    border: #a0a0a0 1px solid;
+}
+
+.pagination .active {
+    font-weight: bold;
+    background-color: #f0f0f0;
+}
+
+.pagination .disabled {
+    border: #f3f3f3 1px solid;
+    color: #aaa;
+}

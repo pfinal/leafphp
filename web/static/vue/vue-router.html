@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Vue Router Example</title>
+
+    <script src="../jquery/jquery.min.js"></script>
+    <script src="./vue.js"></script>
+    <script src="./vue-router.js"></script>
+    <style>
+        .v-link-active {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+<div id="app">
+    <h1>Hello App!</h1>
+    <p>
+        <!-- 使用指令 v-link 进行导航。 -->
+        <a v-link="{ path: '/foo' }">Go to Foo</a>
+        <a v-link="{ path: '/bar' }">Go to Bar</a>
+    </p>
+    <!-- 路由外链 -->
+    <router-view></router-view>
+</div>
+
+<div style="display: none" id="tpl-1">
+    <p>{{name}}</p>
+
+    <ul>
+        <li v-for="item in items">
+            {{ $index }} - {{ item.message }}
+        </li>
+    </ul>
+
+    <ul>
+        <li v-for="item in items" v-if="$index%2==0">
+            {{ $index }} - {{ item.message }}
+        </li>
+    </ul>
+
+    <ul>
+        <!--因为 v-if 是一个指令，需要将它添加到一个元素上。但是如果我们想切换多个元素呢？此时我们可以把一个 <template> 元素当做包装元素，并在上面使用 v-if，最终的渲染结果不会包含它。-->
+        <template v-for="item in items">
+            <template v-if="$index%3==0">
+                <li style="color:red">
+                    {{ $index }} - {{ item.message }}
+                </li>
+            </template>
+            <template v-else>
+                <li>
+                    {{ $index }} - {{ item.message }}
+                </li>
+            </template>
+        </template>
+    </ul>
+
+</div>
+
+<script>
+    // 定义组件1
+    var Foo = {
+        template: '<p>This is foo!</p>'
+    };
+
+    // 定义组件2
+    var MyComponent = Vue.extend({
+        template: $("#tpl-1").html(),
+        data: function () {
+            return {
+                name: "Summer",
+                items: [
+                    {message: 'aa'},
+                    {message: 'bb'},
+                    {message: 'cc'},
+                    {message: 'dd'}
+                ]
+            }
+        }
+    });
+
+    // 路由器需要一个根组件。
+    // 出于演示的目的，这里使用一个空的组件，直接使用 HTML 作为应用的模板
+    var App = {};
+
+    // 创建一个路由器实例
+    // 创建实例时可以传入配置参数进行定制，为保持简单，这里使用默认配置
+    var router = new VueRouter();
+
+    // 定义路由规则
+    // 每条路由规则应该映射到一个组件。这里的“组件”可以是一个使用 Vue.extend
+    // 创建的组件构造函数，也可以是一个组件选项对象。
+    // 稍后我们会讲解嵌套路由
+    router.map({
+        '/foo': {
+            component: Foo
+        },
+        '/bar': {
+            component: MyComponent
+        }
+    });
+
+    // 现在我们可以启动应用了！
+    // 路由器会创建一个 App 实例，并且挂载到选择符 #app 匹配的元素上。
+    router.start(App, '#app');
+</script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "pull-refresh",
+  "main": "pull-refresh.js",
+  "version": "1.1.0",
+  "homepage": "https://github.com/huaable/pull-refresh",
+  "authors": [
+    "xiaohua <coolr@foxmail.com>"
+  ],
+  "license": "http://www.apache.org/licenses/LICENSE-2.0",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

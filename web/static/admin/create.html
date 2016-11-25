@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Admin Template</title>
+
+    <link href="../../static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../static/admin/css/layout.css" rel="stylesheet">
+
+</head>
+<body>
+
+<!-- .row必须包含在 .container(固定宽度)或 .container-fluid(100% 宽度)中，以便为其赋予合适的排列(aligment)和内补(padding)-->
+
+<nav class="layout-header">
+    <div class="container layout-width">
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="pull-left">
+                    <a href="" class="logo" style="font-size: 20px">
+                        管理后台<!--<img src="images/logo.png">-->
+                    </a>
+                </div>
+
+                <div class="pull-right">
+
+                    <span class="account-info">
+                        <span>公司名称</span>
+                        <a href="" class="text-muted"><span class="glyphicon glyphicon-envelope text-muteds"><span
+                                class="icon-circle my-red-dot"></span></span></a>
+                        <a class="login-out" href="">退出</a>
+                    </span>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</nav>
+
+
+<section class="container layout-main layout-width">
+    <div class="row">
+        <div class="col-md-12" style="display: table; width: 100%">
+
+            <!--左菜单区域-->
+            <div class="layout-menu">
+
+                <ul class="main-menu">
+                    <li>
+                        <span class="menu-item">
+                            <i class="icon glyphicon glyphicon-th-large"></i>
+                            <i class="icon pull-right"></i>
+                            <span>主菜单1</span>
+                        </span>
+                    </li>
+
+                    <li class="level-2">
+                        <a class="menu-item" href="">
+                            <i class="icon"></i>
+                            <i class="icon pull-right"><span class="badge">8</span></i>
+                            <span>子菜单a</span>
+                        </a>
+                    </li>
+
+                    <li class="level-2 active">
+                        <a class="menu-item" href="">
+                            <i class="icon"></i>
+                            <i class="icon pull-right"></i>
+                            <span>子菜单b</span>
+                        </a>
+                    </li>
+
+                    <li class="level-2">
+                        <a class="menu-item" href="">
+                            <i class="icon"></i>
+                            <i class="icon pull-right"></i>
+                            <span>子菜单c</span>
+                        </a>
+                    </li>
+
+
+                    <li class="">
+                        <a class="menu-item" href="">
+                            <i class="icon glyphicon glyphicon-th-large"></i>
+                            <i class="icon pull-right"><span class="badge">88</span></i>
+                            <span>主菜单2</span>
+                        </a>
+                    </li>
+
+                    <li class="">
+                        <a class="menu-item" href="">
+                            <i class="icon glyphicon glyphicon-user"></i>
+                            <i class="icon pull-right"></i>
+                            <span>主菜单3</span>
+                        </a>
+                    </li>
+
+                    <li class="">
+                        <a class="menu-item" href="">
+                            <i class="icon glyphicon glyphicon-envelope"></i>
+                            <i class="icon pull-right"><span class="label label-warning">new</span></i>
+                            <span>主菜单4</span>
+                        </a>
+                    </li>
+
+
+                    <li class="">
+                        <a class="menu-item" href="">
+                            <!--<i class="icon"></i>-->
+                            <i class="icon pull-right"></i>
+                            <span>主菜单5没有图标</span>
+                        </a>
+                    </li>
+
+                </ul>
+
+
+            </div>
+            <!-- 左菜单区域结束-->
+
+            <!--右内容区域-->
+            <div class="layout-content">
+
+                <div class="page-title">用户管理</div>
+
+                <div class="content-top">
+                    <ul class="top-nav">
+                        <li class="active"><span>新增用户</span></li>
+
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+
+                <!--content-main start-->
+                <div class="container-fluid content-main">
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <div class="ui-tips bg-info">
+                                <span class="icon glyphicon glyphicon-info-sign"></span> <span>提示信息提示信息提示信息提示信息提示信息提示信息。</span>
+                            </div>
+
+                            <form class="form-horizontal">
+
+                                <div class="form-group">
+                                    <label for="inputEmail3" class="col-sm-2 control-label">登录名称</label>
+
+                                    <div class="col-sm-8">
+                                        <div class="form-control-static">测试</div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+
+                                    <div class="col-sm-8">
+                                        <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                                        <span class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
+                                    </div>
+
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+
+                                    <div class="col-sm-8">
+                                        <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-8">
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox"> Remember me
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-8">
+                                        <button type="submit" class="btn btn-default">Sign in</button>
+                                    </div>
+                                </div>
+                            </form>
+
+
+                        </div>
+                    </div>
+
+                </div>
+                <!--content-main end-->
+
+            </div>
+            <!--右内容区域结束-->
+
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</section>
+
+<footer class="layout-footer">
+    <div class="container layout-width">
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="links">
+                    <li><a href="" target="_blank">关于我们</a></li>
+                    <li><a href="" target="_blank">服务协议</a></li>
+                    <li><a href="" target="_blank">运营规范</a></li>
+                    <li><a href="" target="_blank">客服中心</a></li>
+                    <li><a href="" target="_blank">在线客服</a></li>
+                    <li><p class="copyright">Copyright.All Rights Reserved.</p></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="../../static/ie8/html5shiv.min.js"></script>
+<script src="../../static/ie8/respond.min.js"></script>
+<![endif]-->
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="../../static/jquery/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="../../static/bootstrap/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>

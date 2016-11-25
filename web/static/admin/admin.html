@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Admin Template</title>
+
+    <link href="../../static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../static/admin/css/layout.css" rel="stylesheet">
+
+</head>
+<body>
+
+<!-- .row必须包含在 .container(固定宽度)或 .container-fluid(100% 宽度)中，以便为其赋予合适的排列(aligment)和内补(padding)-->
+<nav class="layout-header">
+    <div class="container layout-width">
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="pull-left">
+                    <a href="" class="logo">
+                        <span class="fa fa-desktop"></span> 管理后台
+                    </a>
+                </div>
+
+                <div class="top-menu pull-left">
+                    <ul>
+                        <li>
+                            <a href="">首页</a>
+                        </li>
+                        <li>
+                            <a class="active" href="">销售管理</a>
+
+                            <div class="nav-child-menu">
+                                <a href="">购车客户管理</a>
+                                <a href="">购车询价</a>
+                                <a href="">预约试驾</a>
+                                <a href="">本店购车点评</a>
+                            </div>
+                        </li>
+                        <li>
+                            <a class="" href="">售后管理</a>
+
+                            <div class="nav-child-menu">
+                                <a href="">车主管理</a>
+                                <a href="">养修预约</a>
+                                <a href="">保险询价</a>
+                                <a href="">紧急救援</a>
+                            </div>
+                        </li>
+                        <li><a class="" href="">参数设置</a>
+
+                            <div class="nav-child-menu">
+                                <a href="">广告管理</a>
+                                <a href="">关注奖励</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="pull-right">
+                <span class="account-info">
+                    <span>公司名称</span>
+                    <a href="" class="text-muted">
+                        <span class="glyphicon glyphicon-envelope text-muteds"><span
+                                class="icon-circle my-red-dot"></span></span>
+                    </a>
+                    <a class="login-out" href="">退出</a>
+                </span>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</nav>
+
+<section class="container layout-main layout-width">
+    <div class="row">
+        <div class="col-md-12 display-table">
+
+            <!--左菜单区域-->
+            <div class="layout-menu">
+
+                <ul class="main-menu">
+                    <li>
+                        <span class="menu-item">
+                            <i class="icon glyphicon glyphicon-th-large"></i>
+                            <i class="icon pull-right"></i>
+                            <span>主菜单1</span>
+                        </span>
+                    </li>
+
+                    <li class="level-2">
+                        <a class="menu-item" href="">
+                            <i class="icon"></i>
+                            <i class="icon pull-right"><span class="badge">8</span></i>
+                            <span>子菜单a</span>
+                        </a>
+                    </li>
+
+                    <li class="level-2 active">
+                        <a class="menu-item" href="">
+                            <i class="icon"></i>
+                            <i class="icon pull-right"></i>
+                            <span>子菜单b</span>
+                        </a>
+                    </li>
+
+                    <li class="level-2">
+                        <a class="menu-item" href="">
+                            <i class="icon"></i>
+                            <i class="icon pull-right"></i>
+                            <span>子菜单c</span>
+                        </a>
+                    </li>
+
+
+                    <li class="">
+                        <a class="menu-item" href="">
+                            <i class="icon glyphicon glyphicon-th-large"></i>
+                            <i class="icon pull-right"><span class="badge">88</span></i>
+                            <span>主菜单2</span>
+                        </a>
+                    </li>
+
+                    <li class="">
+                        <a class="menu-item" href="">
+                            <i class="icon glyphicon glyphicon-user"></i>
+                            <i class="icon pull-right"></i>
+                            <span>主菜单3</span>
+                        </a>
+                    </li>
+
+                    <li class="">
+                        <a class="menu-item" href="">
+                            <i class="icon glyphicon glyphicon-envelope"></i>
+                            <i class="icon pull-right"><span class="label label-warning">new</span></i>
+                            <span>主菜单4</span>
+                        </a>
+                    </li>
+
+
+                    <li class="">
+                        <a class="menu-item" href="">
+                            <!--<i class="icon"></i>-->
+                            <i class="icon pull-right"></i>
+                            <span>主菜单5没有图标</span>
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+            <!-- 左菜单区域结束-->
+
+            <!--右内容区域-->
+            <div class="layout-content">
+
+                <div class="page-title">标题</div>
+
+                <div class="content-top">
+                    <ul class="top-nav">
+                        <li class="active"><span>选项一</span></li>
+                        <li><a href="">选项二</a></li>
+                        <li><a href="">选项三</a></li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="content-top-sub">
+                    <ul class="sub-nav">
+                        <li class="active"><span href="">子选项1</span></li>
+                        <li class="line">|</li>
+                        <li><a href="">子选项2</a></li>
+                        <li class="line">|</li>
+                        <li><a href="">子选项3</a></li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+
+                <!--content-main start-->
+                <div class="container-fluid content-main">
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <!--<div class="alert alert-info">
+                                <i class="icon-info-sign"></i> 提示信息提示信息提示信息提示信息提示信息提示信息
+                            </div>-->
+
+                            <div class="ui-tips bg-info">
+                                <span class="icon glyphicon glyphicon-info-sign"></span>
+                                <span>提示信息提示信息提示信息提示信息提示信息提示信息。</span>
+                            </div>
+
+
+                            <form action="" method="get" class="form-inline form-search mt15">
+                                <div class="form-group">
+                                    <label>关键字搜索</label>
+                                    <input type="text" placeholder="车主姓名或联系电话" class="form-control input-sm"/>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>等级</label>
+                                    <select class="form-control input-sm">
+                                        <option value="">--请选择--</option>
+                                        <option value="0">未评级</option>
+                                        <option value="1">H</option>
+                                        <option value="2">A</option>
+                                        <option value="3">B</option>
+                                        <option value="4">C</option>
+                                        <option value="5">N</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>车系</label>
+                                    <select class="form-control input-sm">
+                                        <option value="">全部</option>
+                                    </select>
+                                    <select class="form-control input-sm">
+                                        <option value="">全部</option>
+                                    </select>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label>日期</label>
+                                    <input type="text" size="8" class="form-control input-sm"/> 至 <input
+                                        class="form-control input-sm" type="text" size="8"/>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>销售顾问</label>
+                                    <select class="form-control input-sm">
+                                        <option value="">--请选择-</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <button type="submit" class="btn btn-success btn-sm">
+                                        <span class="glyphicon glyphicon-search"></span> 搜索
+                                    </button>
+                                    <a class="btn btn-default btn-sm">
+                                        <span class="glyphicon glyphicon-repeat"></span> 全部</a>
+                                </div>
+                            </form>
+
+                            <div class="mt15 pr15">
+                                <a href="create.html" class="btn btn-sm btn-success pull-right"><span
+                                        class="glyphicon glyphicon-plus"></span> 添加记录</a>
+
+                                <div class="clearfix"></div>
+                            </div>
+
+                            <table class="table table-hover mt15">
+                                <thead>
+                                <tr>
+                                    <th>标题</th>
+                                    <th>标题</th>
+                                    <th>标题</th>
+                                    <th>标题</th>
+                                    <th width="120">操作</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>内容</td>
+                                    <td>内容</td>
+                                    <td>内容</td>
+                                    <td>内容</td>
+                                    <td><a href="">详情</a></td>
+                                </tr>
+
+                                <tr class="warning">
+                                    <td>内容</td>
+                                    <td>内容</td>
+                                    <td>内容</td>
+                                    <td>内容</td>
+                                    <td><a href="">详情</a></td>
+                                </tr>
+
+                                <tr>
+                                    <td>内容</td>
+                                    <td>内容</td>
+                                    <td>内容</td>
+                                    <td>内容</td>
+                                    <td><a href="">详情</a></td>
+                                </tr>
+
+                                <tr>
+                                    <td>操作</td>
+                                    <td>内容</td>
+                                    <td>内容</td>
+                                    <td>内容</td>
+                                    <td><a href="">详情</a></td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                            <div class="pull-right">
+                                <span>共 100 条记录 </span>
+                                <span>每页 20 条</span>
+                                <span class="pagination">
+                                    <span class="prev-page disabled">上一页</span>
+                                    <span class="active">1</span>
+                                    <a href="">2</a>
+                                    <a href="">3</a>
+                                    <a href="" class="next-page">下一页</a>
+                                </span>
+                            </div>
+                            <div class="clearfix"></div>
+
+                        </div>
+                    </div>
+
+
+                    <div style="text-align: center">
+
+                        <div class="ui-small-box small-box-green">
+                            <a href="">
+                                        <span class="num">
+                                            <span class="glyphicon glyphicon-user"></span>
+                                            <span>89</span>
+                                        </span>
+
+                                <div>今日新增粉丝</div>
+                            </a>
+                        </div>
+
+                        <div class="ui-small-box small-box-blue">
+                            <a href="">
+                                        <span class="num">
+                                            <span class="glyphicon glyphicon-check"></span>
+                                            <span>9</span>
+                                        </span>
+
+                                <div>代办事项</div>
+                            </a>
+                        </div>
+
+                        <div class="ui-small-box small-box-yellow">
+                            <a href="">
+                                        <span class="num">
+                                            <span class="glyphicon glyphicon-comment"></span>
+                                            <span>100</span>
+                                        </span>
+
+                                <div>未读消息</div>
+                            </a>
+                        </div>
+
+                    </div>
+
+                </div>
+                <!--content-main end-->
+
+            </div>
+            <!--右内容区域结束-->
+
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</section>
+
+<footer class="layout-footer">
+    <div class="container layout-width">
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="links">
+                    <li><a href="" target="_blank">关于我们</a></li>
+                    <li><a href="" target="_blank">服务协议</a></li>
+                    <li><a href="" target="_blank">运营规范</a></li>
+                    <li><a href="" target="_blank">客服中心</a></li>
+                    <li><a href="" target="_blank">在线客服</a></li>
+                    <li><p class="copyright">Copyright.All Rights Reserved.</p></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="../../static/ie8/html5shiv.min.js"></script>
+<script src="../../static/ie8/respond.min.js"></script>
+<![endif]-->
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="../../static/jquery/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="../../static/bootstrap/js/bootstrap.min.js"></script>
+
+</body>
+</html>

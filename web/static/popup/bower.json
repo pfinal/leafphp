@@ -1,0 +1,17 @@
+{
+  "name": "popup",
+  "main": "popup.js",
+  "version": "0.0.0",
+  "homepage": "https://github.com/huaable/popup",
+  "authors": [
+    "xiaohua <coolr@foxmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

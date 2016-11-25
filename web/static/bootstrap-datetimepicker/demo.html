@@ -1,0 +1,22 @@
+<input type="text" name="" id="" value="" class="form-control input-sm js-date"
+       data-date=""
+       data-date-format="yyyy-mm-dd"
+        />
+
+<link href="{{ asset('static/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet" media="screen">
+<script type="text/javascript" src="{{ asset('static/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js') }}" charset="UTF-8"></script>
+<script type="text/javascript" src="{{ asset('static/bootstrap-datetimepicker/js/bootstrap-datetimepicker.zh-CN.js') }}" charset="UTF-8"></script>
+
+<script type="text/javascript">
+    $(function() {
+        $('.js-date').datetimepicker({
+            language:  'zh-CN',
+            weekStart: 0,
+            todayBtn:  1,
+            autoclose: 1,
+            todayHighlight: 1,
+            startView: 2,
+            minView: 2
+        });
+    })
+</script>

@@ -1,0 +1,8 @@
+{# 一次性消息提示 PHP中设置消息 Session::setFlash('message', '消息内容'); #}
+{# 模板中显示消息 {{ include('message.twig') }} #}
+{% if app.session.hasFlash('message') %}
+    <div class="ui-tips bg-info mt15">
+        <span class="icon glyphicon glyphicon-info-sign"></span>
+        <span>{{ app.session.getFlash('message') }}</span>
+    </div>
+{% endif %}

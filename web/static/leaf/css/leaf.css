@@ -1,0 +1,10 @@
+.rain-icon-loading {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: url(../images/loading.gif);
+}
+
+button {
+    outline: none;
+}

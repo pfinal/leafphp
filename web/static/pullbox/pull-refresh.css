@@ -1,0 +1,8 @@
+.pull-refresh,
+.pull-loadmore {
+	/* pullbox.option.reFreshDistance＝60; */
+	height: 60px;
+	background-image: url("loading.gif");
+	background-position: center;
+	background-repeat: no-repeat;
+}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <!-- QQ应用模式 -->
+    <meta name="x5-page-mode" content="app">
+    <link rel="stylesheet" href="pull-refresh.css"/>
+    <script src="pull-refresh.min.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #eee;
+        }
+
+        ul, li {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #content {
+            padding: 20px;
+            line-height: 32px;
+            background-color: #fff;
+        }
+
+        #top-bar {
+            background-color: #ff4145;
+            text-align: center;
+            font-size: 16px;
+            height: 45px;
+            line-height: 45px;
+            position: relative;
+            z-index: 2;
+            margin: 0;
+        }
+
+    </style>
+</head>
+<body>
+<h1 id="top-bar"></h1>
+
+<div id="demo">
+    <!--以下内容均为非必要,可自定义-->
+    <div class="pull-refresh"></div>
+    <ul id="content">
+        <li>内容文本</li>
+        <li>内容文本</li>
+        <li>内容文本</li>
+    </ul>
+    <div class="pull-loadmore"></div>
+</div>
+
+</body>
+</html>
+<script>
+
+
+    var content = document.getElementById("content");
+
+    var option = {
+        boxSelector: "#demo",
+        onReFresh: function (handle) {
+            //添加下拉刷新功能 仅需定义该函数
+            setTimeout(function () {//ajax
+                for (var i = 0; i < 5; i++) {
+                    var li = document.createElement('li');
+                    li.innerHTML = '最新内容 -- ' + new Date().toLocaleString();
+                    content.insertBefore(li, content.firstChild);
+                }
+                handle.finish();
+            }, 500);
+
+        },
+        onLoadMore: function (handle) {
+            //添加加载更多功能 仅需定义该函数
+            setTimeout(function () {//ajax
+                for (var i = 0; i < 5; i++) {
+                    var li = document.createElement('li');
+                    li.innerHTML = '加载内容 -- ' + new Date().toLocaleString();
+                    content.appendChild(li, content.firstChild);
+                }
+                handle.finish();//如果没有更多内容了可以不执行改方法,这样阻止 pullbox.onLoadMore 再次被调用
+            }, 500);
+        }
+    };
+    pullbox(option);
+
+</script>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title></title>
+    <link rel="stylesheet" href="../popup.css"/>
+    <!--<script src="../jquery-1.11.1.min.js"></script>-->
+    <script src="zepto.min.js"></script>
+    <script src="../popup.js"></script>
+</head>
+<style>
+
+    html {
+        padding: 0;
+        margin: 0;
+        color: #333;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    .content-block {
+        padding: 8px;
+    }
+
+    .btn {
+        padding: 7px 12px;
+        font-size: 16px;
+        background-color: #f50;
+        border: 1px solid #F50;
+        outline: none;
+        color: #FFF;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    .btn-block {
+        display: block;
+        width: 100%;
+    }
+
+    .btn:active {
+        background-color: #E40;
+        border-color: #e40;
+    }
+
+</style>
+<body>
+<div class="content-block">
+    <button id="popup-alert" class="btn btn-block">alert</button>
+    <button id="popup-confirm" class=" btn btn-block">confirm</button>
+    <button id="popup-cute" class="btn btn-block">cute</button>
+    <button id="popup-loading" class="btn btn-block">loading(true) && loading(false)</button>
+    <button id="popup" class="btn btn-block">popup</button>
+</div>
+
+<script>
+
+    $("#popup-alert").click(function () {
+        popup.alert("消息内容", function () {
+            alert("确认");
+        });
+    })
+
+    $("#popup-confirm").click(function () {
+        popup.confirm("消息内容", function () {
+            alert("确认");
+        }, function () {
+            alert("取消");
+        });
+    })
+
+    $("#popup-cute").click(function () {
+        popup.cute("消息内容",function(){
+        });
+    });
+
+    $("#popup-loading").click(function () {
+        popup.loading(true);
+        setTimeout(function () {
+            popup.loading(false);
+        }, 3000);
+    })
+
+    $("#popup").click(function () {
+
+        $.popup({
+            title: "", // string
+            content: "内容...", // string | jq对象
+            button: [
+                {
+                    "text": "是",
+                    "callback": function (event, popup) {
+                        popup.close()
+                    }
+                },
+                {
+                    "text": "否",
+                    "callback": function (event, popup) {
+                        popup.close()
+                    }
+                }
+            ],
+            width: " 90%", //"300px" | 50% 设置主体宽度
+            height: "auto", //"300px" | 50%\ auto 设置主体高度
+            modal: false, //true 模态 | false 非模态（点击遮罩不移除弹出层）
+            className: "",//添加自定义样式名
+            callback: {
+                "clickCallbackExample": function (event, popup) {//在属于popup内部dom上自定义data-callback="clickCallbackExample"属性,点击后会回调执行这里
+                }
+            }
+        }).show()
+    })
+
+</script>
+</body>
+</html>
