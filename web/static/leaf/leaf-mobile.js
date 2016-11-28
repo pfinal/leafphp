@@ -5,7 +5,7 @@
  *
  *  <link rel="stylesheet" href="static/popup/popup.css"/>
  *  <script src="static/popup/popup.min.js"></script>
- *  <link href="static/leaf/css/base.css" rel="stylesheet" />
+ *  <link href="static/leaf/css/leaf.css" rel="stylesheet" />
  *  <script src="static/leaf/leaf-mobile.js"></script>
  *
  * @author  Zou Yiliang
