@@ -2,9 +2,6 @@
 
 namespace Entity;
 
-use Leaf\Object;
-
-class User extends Object
+class User extends \Leaf\Auth\User
 {
-    
 }
