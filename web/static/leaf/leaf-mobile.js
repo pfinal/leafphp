@@ -79,6 +79,23 @@ leaf.loading = function (btn, content) {
     return d;
 }
 
+leaf.messageIndex = 99999;
+
+/**
+ *
+ * @param content
+ * @param type success|danger|warning|info
+ */
+leaf.message = function (content, type) {
+    type = type || "success";
+    leaf.messageIndex++;
+    var message = $('<div class="leaf-message" style="position: absolute;top:100px;width:100%;text-align: center;z-index: ' + leaf.messageIndex + '"><span class="icon"></span><span  style="min-width: 300px;display: inline-block" class="alert alert-' + type + '">' + content + '</span></div>');
+    $("body").append(message);
+    setTimeout(function () {
+        message.remove();
+    }, 2000)
+}
+
 /**
  * 自动消失 弹窗提示
  *

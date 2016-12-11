@@ -112,7 +112,7 @@ leaf.toast = function (content, time, callback) {
         }
 
     var d = dialog({
-        zIndex: 2048,
+        //zIndex: 2048,
         content: "<div style='_width:120px;min-width: 120px;text-align: center;padding-top:15px;padding-bottom: 15px;'>" + content + "</div>",
         backdropOpacity: 0.05
     });
@@ -121,6 +121,23 @@ leaf.toast = function (content, time, callback) {
         d.close().remove();
         callback();
     }, time);
+}
+
+leaf.messageIndex = 99999;
+
+/**
+ *
+ * @param content
+ * @param type success|danger|warning|info
+ */
+leaf.message = function (content, type) {
+    type = type || "success";
+    leaf.messageIndex++;
+    var message = $('<div class="leaf-message" style="position: absolute;top:100px;width:100%;text-align: center;z-index: ' + leaf.messageIndex + '"><span class="icon"></span><span  style="min-width: 300px;display: inline-block" class="alert alert-' + type + '">' + content + '</span></div>');
+    $("body").append(message);
+    setTimeout(function () {
+        message.remove();
+    }, 2000)
 }
 
 /**
@@ -144,7 +161,7 @@ leaf.confirm = function (content, success, cancel) {
         };
 
     var d = dialog({
-        zIndex: 2048,
+        //zIndex: 10000,
         backdropOpacity: 0.4,
         title: '系统提示',
         content: "<div style='min-width:18em'>" + content + "</div>",
