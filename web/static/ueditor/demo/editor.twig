@@ -7,7 +7,7 @@
     <script type="text/javascript" charset="utf-8" src="{{ asset('static/jquery/jquery.min.js') }}"></script>
 
     <script type="text/javascript" charset="utf-8" src="{{ asset('static/ueditor/lib/ueditor.config.js') }}"></script>
-    <script type="text/javascript" charset="utf-8" src="{{ asset('static/ueditor/lib/ueditor.all.min.js') }}"></script>
+    <script type="text/javascript" charset="utf-8" src="{{ asset('static/ueditor/lib/ueditor.all.js') }}"></script>
     <script type="text/javascript" charset="utf-8" src="{{ asset('static/ueditor/lib/lang/zh-cn/zh-cn.js') }}"></script>
 
 </head>
@@ -31,7 +31,7 @@
         autoFloatEnabled: true,
         enableAutoSave: false,
         saveInterval: 1000 * 60 * 60,
-        iframeCssUrl: '{{ asset('static/ueditor/themes/iframe.css') }}',
+        iframeCssUrl: '{{ asset('static/ueditor/iframe.css') }}',
         toolbars: [[
             'fullscreen',
             'source', 'emotion', 'fontfamily', 'fontsize', 'bold', 'italic', 'underline', 'fontborder', 'strikethrough',
