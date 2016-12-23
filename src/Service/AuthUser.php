@@ -13,13 +13,6 @@ use Leaf\DB;
 use Leaf\Util;
 use Leaf\View;
 
-/**
- * Route::any('register', 'AppBundle\Controller\AuthController@register');
- * Route::any('login', 'AppBundle\Controller\AuthController@login');
- * Route::any('logout', 'AppBundle\Controller\AuthController@logout');
- * Route::any('password/forgot', 'AppBundle\Controller\AuthController@forgot');
- * Route::any('password/reset', 'AppBundle\Controller\AuthController@reset');
- */
 trait AuthUser
 {
     /**
@@ -61,6 +54,7 @@ trait AuthUser
      */
     protected function passwordHash($password)
     {
+        //return password_hash($password, PASSWORD_BCRYPT);
         return md5($password);
     }
 
@@ -72,6 +66,7 @@ trait AuthUser
      */
     protected function passwordVerify($password, $passwordHash)
     {
+        //return password_verify($password, $passwordHash);
         if (strlen($password) < 4 || strlen($password) > 50) {
             return false;
         }
@@ -161,14 +156,19 @@ trait AuthUser
 
         $email = $request->get('email');
 
+        if (!Util::isEmail($email)) {
+            Session::setFlash('message', '请输入正确邮箱');
+            return $this->forgotView();
+        }
+
         $user = DB::table(User::tableName())->where('email=?', [$email])->findOne();
 
-        if ($user != null) {
+        if ($user == null) {
             Session::setFlash('message', '邮箱未注册');
             return $this->forgotView();
         }
 
-        $token = Util::guid();
+        $token = strtolower(str_replace('-', '', Util::guid()));
         $bool = DB::table('password_reset')->insert(['email' => $user['email'], 'token' => $token, 'created_at' => date('Y-m-d H:i:s')]);
         if (!$bool) {
             Session::setFlash('message', '系统错误，请稍后再试');
@@ -226,7 +226,7 @@ trait AuthUser
             return $this->resetView();
         }
 
-        $user = DB::table(User::tableName())->asEntity(User::className())->where('email=?', $email)->findOne();
+        $user = DB::table(User::tableName())->asEntity(User::className())->where('email=?', [$email])->findOne();
         if ($user == null) {
             throw new HttpException(500, '无此用户信息');
         }
