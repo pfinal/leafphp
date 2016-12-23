@@ -19,14 +19,13 @@
                                 <label class="col-md-4 control-label">用户名</label>
 
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" name="username" value="">
+                                    <input type="text" class="form-control" name="loginId" value="">
 
 
-                                    <!--
-                                        <span class="help-block">
+                                    {#<span class="help-block">
                                             <strong></strong>
-                                        </span>
-                                   -->
+                                    </span>#}
+
                                 </div>
                             </div>
 
@@ -59,7 +58,8 @@
                                         <i class="fa fa-btn fa-sign-in"></i>登录
                                     </button>
 
-                                    <a class="btn btn-link" href="{{ url('password/reset') }}">忘记密码?</a>
+                                    <a class="btn btn-link" href="{{ url('password/forgot') }}">忘记密码?</a>
+                                    <a class="btn btn-link" href="{{ url('register') }}">没有帐号?</a>
                                 </div>
                             </div>
                         </form>
