@@ -35,7 +35,7 @@ class User extends \Leaf\Auth\User
             'mobile' => '手机',
             'status' => '状态',
             'created_at' => '创建时间',
-            'updated_at' => '更新时间',
+            'updated_at' => '修改时间',
         ];
     }
 
