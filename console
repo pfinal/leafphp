@@ -21,4 +21,12 @@ $console = new ConsoleApplication();
 $console->add(new BundleCommand());
 $console->add(new EntityCommand());
 $console->add(new CurdCommand());
+
+if (file_exists(__DIR__ . '/config/command.php')) {
+    $commands = require __DIR__ . '/config/command.php';
+    foreach ($commands as $command) {
+        $console->add(new $command);
+    }
+}
+
 $console->run();
