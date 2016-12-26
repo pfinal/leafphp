@@ -277,6 +277,5 @@
         }
         return fmt;
     };
-
 })(jQuery);
 
