@@ -39,3 +39,19 @@ button {
     background-color: #f2dede;
     border-color: #ebccd1;
 }
+
+.leaf-show-dialog-close {
+    display: inline-block;
+    background-color: #fff;
+    border-radius: 100%;
+    font-size: 18px;
+    line-height: 18px;
+    padding: 5px 8px;
+    position: absolute;
+    top: -15px;
+    right: -15px;
+}
+
+.leaf-show-dialog-close:after {
+    content: "X";
+}

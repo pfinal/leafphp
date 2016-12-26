@@ -28,8 +28,13 @@
 
 
 <div id="show-test" style="display: none">
-    <a href="javascript:window.show.close();">Close</a>
+    <div class="btn btn-primary js-show-div2">showDiv</div>
     <div>aaaa</div>
+</div>
+
+<div id="show-test2" style="display: none">
+
+    <div>bbb</div>
 </div>
 
 <div style="margin: 20px;">
@@ -88,13 +93,24 @@
 
 
     $(".js-show-div").click(function () {
-        window.show = leaf.show("#show-test", function () {
-            alert("close");
+       var obj = leaf.show("#show-test", function () {
+            console.log('close')
         });
+
+      // console.log(obj);
+    });
+
+    $(".js-show-div2").click(function () {
+        var obj =leaf.show("#show-test2", function () {
+            console.log('close')
+
+        });
+        //console.log(obj);
+
     });
 
     $(".js-show-message").click(function () {
-        leaf.message('提示内容','success');
+        leaf.message('aaa', 'danger');
     });
 </script>
 </body>
