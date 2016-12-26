@@ -377,9 +377,9 @@
         });
 
         //全选
-        //data-selector是目录对象jQuery选择器
+        //data-selector是目标对象jQuery选择器
         //<input type="checkbox" class="leaf-select-all" data-selector=":checkbox[name='id[]']" />
-        $(".leaf-select-all,.leaf-select-all").click(function () {
+        $(".leaf-select-all").click(function () {
             var _this = this;
             var selector = $(this).attr("data-selector");
             $(selector).each(function () {
@@ -388,7 +388,7 @@
         });
 
         //批量操作
-        $(".leaf-batch,.leaf-batch").click(function () {
+        $(".leaf-batch").click(function () {
             var $this = $(this);
             var url = $this.attr("href");
 
