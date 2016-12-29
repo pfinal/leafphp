@@ -33,6 +33,9 @@ class Test extends Command
 
     public function execute(InputInterface $input, OutputInterface $output)
     {
+        //使用leafphp来处理异常
+        $this->getApplication()->setCatchExceptions(false);
+
         //交互获取输入信息
         $output->write("enter your password:");
         $password = trim(fgets(STDIN));
