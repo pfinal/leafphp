@@ -13,6 +13,14 @@ use Leaf\DB;
 use Leaf\Util;
 use Leaf\View;
 
+/**
+ *
+ * Route::any('register', 'AppBundle\Controller\AuthController@register');
+ * Route::any('login', 'AppBundle\Controller\AuthController@login');
+ * Route::any('logout', 'AppBundle\Controller\AuthController@logout');
+ * Route::any('password/forgot', 'AppBundle\Controller\AuthController@forgot');
+ * Route::any('password/reset', 'AppBundle\Controller\AuthController@reset');
+ */
 trait AuthUser
 {
     /**

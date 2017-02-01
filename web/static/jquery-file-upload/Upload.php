@@ -53,6 +53,7 @@ trait Upload
             //生成fileKey传递给前端
             $file['fileKey'] = Util::guid();
 
+            //如果是api，不要使用session
             Session::setFlash($file['fileKey'], $file);
             Session::setFlash($file['fileKey'] . '.config', $config);
 

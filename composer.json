@@ -10,10 +10,5 @@
         "psr-4": {
           "": ["src\\"]
         }
-    },
-    "scripts": {
-        "post-root-package-install": [
-            "php -r \"file_exists('config/app-local.php') || copy('config/app-local.example', 'config/app-local.php');\""
-        ]
     }
 }
