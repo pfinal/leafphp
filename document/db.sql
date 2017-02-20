@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS pre_user(
   KEY email (email(20)),
   KEY mobile (mobile),
   KEY remember_token (remember_token(20))
-)ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1001 COMMENT '用户';
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=1001 COMMENT '用户';
 
 
 DROP TABLE IF EXISTS pre_password_reset;
@@ -28,7 +28,7 @@ CREATE TABLE `pre_password_reset` (
   `created_at` DATETIME NOT NULL DEFAULT '1970-01-01' COMMENT '新增时间',
   KEY email (email(20)),
   KEY token (token(20))
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '邮箱重置密码';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT '邮箱重置密码';
 
 
 DROP TABLE IF EXISTS pre_user_wechat;
@@ -40,4 +40,4 @@ CREATE TABLE IF NOT EXISTS pre_user_wechat(
   `created_at` DATETIME NOT NULL DEFAULT '1970-01-01' COMMENT '新增时间',
   `updated_at` DATETIME NOT NULL DEFAULT '1970-01-01' COMMENT '修改时间',
   unique (user_id, appid, openid)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1001 COMMENT='绑定微信';
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=1001 COMMENT='绑定微信';

@@ -21,7 +21,7 @@ $app['db.config'] = array(
     'dsn' => 'mysql:host=127.0.0.1;dbname=test',
     'username' => 'root',
     'password' => '',
-    'charset' => 'utf8',
+    'charset' => 'utf8mb4',
     'tablePrefix' => '',
 );
 
