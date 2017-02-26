@@ -14,7 +14,7 @@ use Leaf\Response;
  *
  * @link http://www.php.net/manual/zh/features.http-auth.php
  */
-class BasicAuthMiddleware
+class AuthWithBasicMiddleware
 {
     public function handle(Request $request, \Closure $next)
     {
