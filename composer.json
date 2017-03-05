@@ -1,8 +1,8 @@
 {
     "name": "pfinal/leafphp",
     "require": {
-        "pfinal/leaf": "~2.0",
-        "pfinal/cache": "~1.0",
+        "pfinal/leaf": "*",
+        "pfinal/cache": "*",
         "cebe/markdown": "~1.0",
         "league/flysystem": "~1.0"
     },
