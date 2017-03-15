@@ -42,7 +42,7 @@
      * load.start();
      * setTimeout(function(){load.stop()},3000);
      *
-     * 传入btn是，应该用button元素，否则无法禁用click事件
+     * 传入btn时，应该用button元素，否则无法禁用click事件
      *
      */
     leaf.loading = function (btn, content) {

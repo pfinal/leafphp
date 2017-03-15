@@ -4,7 +4,7 @@ $app['debug'] = true;
 $app['env'] = 'dev';
 
 $app['db.config'] = array_replace_recursive($app['db.config'], [
-    'dsn' => 'mysql:host=127.0.0.1;dbname=test',
+    'dsn' => 'mysql:host=localhost;dbname=test',
     'username' => 'root',
     'password' => '',
 ]);
