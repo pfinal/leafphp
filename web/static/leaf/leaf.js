@@ -1,5 +1,5 @@
 /**
- * leafjs
+ * leaf.js
  *
  *  依赖artDialog
  *  <link href="static/art-dialog/css/ui-dialog.css" rel="stylesheet" />

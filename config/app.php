@@ -16,8 +16,7 @@ $app['auth'] = 'Middleware\AuthMiddleware';
 
 //数据库连接配置
 $app['db.config'] = array(
-    'host' => 'localhost',
-    'database' => 'test',
+    'dsn' => 'mysql:host=localhost;dbname=test',
     'username' => 'root',
     'password' => '',
     'charset' => 'utf8mb4',
