@@ -277,5 +277,44 @@
         }
         return fmt;
     };
+
+    /**
+     * 转为html实体
+     * @param str
+     * @returns {string}
+     */
+    leaf.htmlEncode = function (str) {
+        return str.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;')
+            .replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    };
+
+    function parse_str(query) {
+        var g = {}
+        if (typeof query === 'undefined') {
+            return g
+        }
+        var GET = query.split('&')
+        for (var i = 0; i < GET.length; i++) {
+            var q = GET[i].split('=')
+            g[q[0]] = decodeURI(q[1])
+        }
+        return g
+    }
+
+    /**
+     * 获取GET参数
+     * @param key
+     * @returns {*}
+     */
+    leaf.getParam = function (key) {
+        var url = location.href
+        var index = url.indexOf('?')
+        if (index == -1)  return null
+        var query = url.substr(index + 1, url.length)
+        var GET = parse_str(query)
+        if (!key || $.type(key) !== 'string') return GET
+        return GET[key] ? GET[key] : null
+    }
+
 })(jQuery);
 
