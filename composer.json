@@ -5,7 +5,8 @@
         "pfinal/cache": "*",
         "cebe/markdown": "~1.0",
         "league/flysystem": "~1.0",
-        "swiftmailer/swiftmailer":"5.*"
+        "swiftmailer/swiftmailer":"5.*",
+        "myclabs/php-enum":"*"
     },
     "autoload": {
         "psr-4": {
