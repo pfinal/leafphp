@@ -20,7 +20,7 @@
 
                                 <div class="col-md-6">
                                     <input id="email" type="email" class="form-control" name="email"
-                                           value="" autofocus required>
+                                           value="{{ app.request.get('email')|default('') }}" autofocus required>
 
                                     <span class="help-block">
                                         <strong></strong>
@@ -29,15 +29,15 @@
                             </div>
 
                             <div class="form-group {# has-error #}">
-                                <label for="name" class="col-md-4 control-label">昵称</label>
+                                <label for="nickname" class="col-md-4 control-label">昵称</label>
 
                                 <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control" name="username" value=""
+                                    <input id="nickname" type="text" class="form-control" name="nickname" value="{{ app.request.get('nickname')|default('') }}"
                                            required>
 
                                     <span class="help-block">
-                                    <strong></strong>
-                                </span>
+                                        <strong></strong>
+                                    </span>
 
                                 </div>
                             </div>

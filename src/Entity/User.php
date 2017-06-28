@@ -22,7 +22,7 @@ class User extends \Leaf\Auth\User
 {
     //状态
     const STATUS_ENABLE = 10;   // 有效
-    const STATUS_DISABLE = 20;  // 无效
+    const STATUS_DISABLE = 20;  // 禁用
 
     public static function labels()
     {

@@ -11,6 +11,7 @@ use Leaf\Session;
 use Leaf\Url;
 use Leaf\DB;
 use Leaf\Util;
+use Leaf\Validator;
 use Leaf\View;
 
 /**
@@ -23,6 +24,16 @@ use Leaf\View;
  */
 trait AuthUser
 {
+    /**
+     * 是否开启注册功能
+     *
+     * @return bool
+     */
+    protected function enableRegister()
+    {
+        return false;
+    }
+
     /**
      * 注册视图
      */
@@ -95,8 +106,51 @@ trait AuthUser
             return $this->registerView();
         }
 
-        Session::setFlash('message', '系统未开放注册功能');
-        return $this->registerView();
+        if (!$this->enableRegister()) {
+            Session::setFlash('message', '系统未开放注册功能');
+            return $this->registerView();
+        }
+
+        $data = $request->all();
+
+        $rule = [
+            [['email', 'nickname'], 'trim'],
+            [['email', 'nickname', 'password', 'password_confirmation'], 'required'],
+            ['email', 'email'],
+            ['nickname', 'string', 'length' => [2, 10]],
+            [['password', 'password_confirmation'], 'string', 'length' => [6, 20]],
+            ['password', 'compare', 'compareValue' => $data['password_confirmation'], 'message' => '两次密码必须相同'],
+            ['email', 'unique', 'table' => User::tableName(), 'field' => 'email'],
+        ];
+
+        $labels = [
+            'email' => '邮箱',
+            'nickname' => '昵称',
+            'password' => '密码',
+            'password_confirmation' => '确认密码',
+        ];
+
+        if (!Validator::validate($data, $rule, $labels)) {
+            Session::setFlash('message', Validator::getFirstError());
+            return $this->registerView();
+        }
+
+        $data['password_hash'] = $this->passwordHash($data['password']);
+        $data['status'] = User::STATUS_ENABLE;
+        $data['created_at'] = $data['updated_at'] = date('Y-m-d H:i:s');
+
+        unset($data['password']);
+        unset($data['password_confirmation']);
+
+        $userId = DB::table(User::tableName())->insertGetId($data);
+
+        if ($userId > 0) {
+            Auth::loginUsingId($userId);
+            return Redirect::to(Url::to('/'));
+        } else {
+            Session::setFlash('message', '系统错误，注册失败');
+            return $this->registerView();
+        }
     }
 
     /**
@@ -131,6 +185,8 @@ trait AuthUser
         if ($this->passwordVerify($request->get('password'), $user['password_hash'])) {
 
             Auth::login($user, $request->get('remember'));
+
+            Session::set('last_login_at', @date('Y-m-d H:i:s'));
 
             return Redirect::to(Session::getFlash('returnUrl', Url::to('/')));
         }
