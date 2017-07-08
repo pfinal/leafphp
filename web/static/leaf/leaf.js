@@ -130,24 +130,26 @@
      *
      * @param content
      * @param type success|danger|warning|info
+     * @param time 显示时间
      */
-    leaf.message = function (content, type) {
+    leaf.message = function (content, type, time) {
         type = type || "success";
+        time = time || 2000;
         leaf.messageIndex++;
-        var message = $('<div class="leaf-message" style="position: absolute;top:100px;width:100%;text-align: center;z-index: ' + leaf.messageIndex + '"><span class="icon"></span><span  style="min-width: 300px;display: inline-block" class="alert alert-' + type + '">' + content + '</span></div>');
+        var message = $('<div class="leaf-message" style="position: fixed;top:10px;width:100%;text-align: center;z-index: ' + leaf.messageIndex + '"><span class="icon"></span><span  style="min-width: 300px;display: inline-block" class="alert alert-' + type + '">' + content + '</span></div>');
         $("body").append(message);
         setTimeout(function () {
             message.remove();
-        }, 2000)
+        }, time)
     };
 
     /**
      *
      * @param content
+     * @param time
      */
-    leaf.messageDanger = function (content) {
-
-        leaf.message(content, 'danger');
+    leaf.messageDanger = function (content, time) {
+        leaf.message(content, 'danger', time);
     };
 
     /**

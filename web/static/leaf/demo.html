@@ -15,12 +15,9 @@
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <script src="../bootstrap/js/bootstrap.min.js"></script>
 
-    <!--artDialog-->
-    <link href="../art-dialog/css/ui-dialog.css" rel="stylesheet"/>
-    <script src="../art-dialog/dist/dialog-min.js"></script>
-
-    <!--RainJS-->
+    <!--LeafJS-->
     <link href="css/leaf.css" rel="stylesheet"/>
+    <script src="dialog.js"></script>
     <script src="leaf.js"></script>
 
 </head>
@@ -93,15 +90,15 @@
 
 
     $(".js-show-div").click(function () {
-       var obj = leaf.show("#show-test", function () {
+        var obj = leaf.show("#show-test", function () {
             console.log('close')
         });
 
-      // console.log(obj);
+        // console.log(obj);
     });
 
     $(".js-show-div2").click(function () {
-        var obj =leaf.show("#show-test2", function () {
+        var obj = leaf.show("#show-test2", function () {
             console.log('close')
 
         });
