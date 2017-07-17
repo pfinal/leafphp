@@ -389,7 +389,7 @@
     $(function () {
         //重要操作的confirm
         //<a href="delete.php" class="leaf-confirm" data-dialog-content="您确定执行此操作吗">删除</a>
-        $(document).on("click", "a.leaf-confirm,a.leaf-confirm", function () {
+        $(document).on("click", "a.leaf-confirm", function () {
 
             var _this = this;
 
@@ -404,7 +404,9 @@
                 okValue: "确定",
                 ok: function () {
                     var url = _this.href;
-                    window.location = url;
+                    var method = $(_this).attr("data-method");
+                    method = method || "GET";
+                    $("<form>").attr({"method": method, "action": url}).appendTo("body").submit();
                 },
                 cancelValue: "取消",
                 cancel: function () {
