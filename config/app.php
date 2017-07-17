@@ -11,8 +11,9 @@ $app->register(new \Leaf\Provider\CaptchaProvider());
 $app->register(new \Leaf\Provider\CacheProvider());
 
 //中间件
-$app['cors'] = 'Middleware\CorsMiddleware';
 $app['auth'] = 'Middleware\AuthMiddleware';
+$app['cors'] = 'Middleware\CorsMiddleware';
+$app['csrf'] = 'Middleware\CsrfMiddleware';
 
 //数据库连接配置
 $app['db.config'] = array(
