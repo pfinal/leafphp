@@ -5,6 +5,7 @@ namespace Service;
 use Leaf\Application;
 use Leaf\Session;
 use Leaf\UploadedFile;
+use Leaf\Url;
 use Leaf\Util;
 
 /**
@@ -37,7 +38,8 @@ trait Upload
     {
         $config += array(
             'basePath' => 'temp',
-            'rootPath' =>  Application::$app['path'] . '/web/',
+            'rootPath' => Application::$app['path'] . '/web/',
+            'baseUrl' => Url::asset('/'),
             'thumb' => array(),
         );
 
@@ -54,7 +56,7 @@ trait Upload
             //生成fileKey传递给前端
             $file['fileKey'] = Util::guid();
 
-            //如果是api，不要使用session
+            //如果是api，注意不要使用session
             Session::setFlash($file['fileKey'], $file);
             Session::setFlash($file['fileKey'] . '.config', $config);
 
@@ -78,9 +80,9 @@ trait Upload
             return '';
         }
 
-        $config = Sessionr::getFlash($fileKey . '.config');
+        $config = Session::getFlash($fileKey . '.config');
 
-        $tempRoot = rtrim($config['basePath'], '/\\') . DIRECTORY_SEPARATOR;
+        $tempRoot = rtrim($config['rootPath'], '/\\') . DIRECTORY_SEPARATOR . rtrim($config['basePath'], '/\\') . DIRECTORY_SEPARATOR;
         $publishRoot = rtrim($config['rootPath'], '/\\') . DIRECTORY_SEPARATOR;
 
         $fileName = $fileInfo['name'];
