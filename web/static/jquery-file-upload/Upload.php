@@ -2,6 +2,7 @@
 
 namespace Service;
 
+use Leaf\Application;
 use Leaf\Session;
 use Leaf\UploadedFile;
 use Leaf\Util;
@@ -36,7 +37,7 @@ trait Upload
     {
         $config += array(
             'basePath' => 'temp',
-            'rootPath' => './',
+            'rootPath' =>  Application::$app['path'] . '/web/',
             'thumb' => array(),
         );
 
