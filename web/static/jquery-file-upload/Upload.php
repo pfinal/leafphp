@@ -78,15 +78,15 @@ trait Upload
             return '';
         }
 
-        $config = Session::getFlash($fileKey . '.config');
+        $config = Sessionr::getFlash($fileKey . '.config');
 
-        $tempRoot = trim($config['basePath'], '/\\') . DIRECTORY_SEPARATOR;
-        $publishRoot = trim($config['rootPath'], '/\\') . DIRECTORY_SEPARATOR;
+        $tempRoot = rtrim($config['basePath'], '/\\') . DIRECTORY_SEPARATOR;
+        $publishRoot = rtrim($config['rootPath'], '/\\') . DIRECTORY_SEPARATOR;
 
         $fileName = $fileInfo['name'];
 
         //图片目录
-        $baseDir = $publishRoot . trim($dir, '/\\') . DIRECTORY_SEPARATOR;
+        $baseDir = $publishRoot . rtrim($dir, '/\\') . DIRECTORY_SEPARATOR;
 
         //创建目录并移动文件
         Util::createDirectory(dirname($baseDir . $fileName));
