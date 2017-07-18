@@ -7,10 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}Admin{% endblock %}</title>
 
-    <link href="{{ asset('static/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset("static/art-dialog/css/ui-dialog.css") }}" rel="stylesheet"/>
     <link href="{{ asset('static/admin/css/layout.css') }}" rel="stylesheet">
     <link href="{{ asset('static/leaf/css/leaf.css') }}" rel="stylesheet">
+
     {% block stylesheet %}
     {% endblock %}
 
@@ -26,17 +25,17 @@
 
                         <div class="pull-left">
                             <a href="{{ url('/') }}" class="logo">
-                                <span class="glyphicon glyphicon-dashboard"></span> 仪表盘
+                                <span class="glyphicon glyphicon-dashboard"></span> 管理后台
                             </a>
                         </div>
 
                         <div class="pull-right">
 
-                        <span class="account-info">
+                            <span class="account-info">
 
-                            <span>管理员</span>
-                            <a class="login-out" href="{{ url('logout') }}">退出</a>
-                        </span>
+                                <span>管理员</span>
+                                <a class="login-out" href="{{ url('logout') }}">退出</a>
+                            </span>
 
                         </div>
 
@@ -115,8 +114,8 @@
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="{{ asset('static/jquery/jquery.min.js') }}"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="{{ asset('static/bootstrap/js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('static/art-dialog/dist/dialog-min.js') }}"></script>
+<script src="{{ asset('static/admin/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('static/leaf/dialog.js') }}"></script>
 <script src="{{ asset('static/leaf/leaf.js') }}"></script>
 
 {% block javascript %}

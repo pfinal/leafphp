@@ -1,0 +1,394 @@
+// sass --watch ui.scss:css/layout.css
+/*! 邹义良 (http://www.pfinal.cn) */
+@import "_variables";
+@import "bootstrap/bootstrap";
+
+ul, li {
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  list-style: none;
+}
+
+.mt10 {
+  margin-top: 10px;
+}
+
+.mt15 {
+  margin-top: 15px;
+}
+
+.mt20 {
+  margin-top: 20px;
+}
+
+.pr15 {
+  padding-right: 15px;
+}
+
+//提示信息
+.ui-tips {
+  margin: 10px 0;
+  padding: 10px;
+  color: #626f7b;
+  border-radius: 4px;
+
+  .icon {
+    color: #00aeef;
+  }
+}
+
+//搜索表单
+.form-search {
+  background-color: #f4f5f9;
+  padding: 15px;
+
+  .form-group {
+    margin-right: 20px;
+    padding-bottom: 10px;
+  }
+
+  label {
+    margin-right: 10px;
+  }
+}
+
+//页面内容宽度
+.layout-width {
+  max-width: 1200px;
+  min-width: 768px;
+}
+
+//头部
+.layout-header {
+  min-height: 60px;
+  min-width: 768px;
+  background-color: #fff;
+  border-top: 4px solid $brand-primary;
+  border-bottom: 1px solid #d9dadc;
+  line-height: 60px;
+
+  .logo {
+    font-size: 20px;
+    text-decoration: none;
+    color: $text-color;
+  }
+
+  .container .row .col-md-12 { //去掉默认槽宽(gutter) 默认的col有15px padding
+    padding: 0;
+  }
+
+  .account-info > * {
+    margin-left: 10px;
+    text-decoration: none;
+  }
+
+  .my-red-dot {
+    width: 7px;
+    height: 7px;
+    display: inline-block;
+    position: absolute;
+    top: -3px;
+    right: -3px;
+    background-color: red;
+    border-radius: 5px;
+    font-size: 8px;
+  }
+
+  .top-menu {
+    margin-left: 92px;
+
+  }
+
+  .top-menu a {
+    color: $text-color;
+  }
+
+  .top-menu > ul {
+    padding-top: 10px;
+  }
+
+  .top-menu li {
+    float: left;
+    position: relative;
+    height: 50px;
+  }
+
+  .top-menu .nav-child-menu {
+    position: absolute;
+    width: 150px;
+    z-index: 100;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-top: 0;
+    display: none;
+    left: -1px;
+    top: 50px;
+  }
+
+  .top-menu li:hover .nav-child-menu {
+    display: block;
+  }
+
+  .top-menu .nav-child-menu a {
+    display: block;
+    line-height: 40px;
+    height: 40px;
+    text-decoration: none;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  .top-menu .nav-child-menu a:hover {
+    background: #f0f0f0;
+  }
+
+  .top-menu > ul > li > a {
+    display: block;
+    padding-left: 8px;
+    padding-right: 8px;
+    line-height: 40px;
+    height: 40px;
+  }
+
+  .top-menu > ul > li > a.active {
+    background-color: #f9f9f9;
+    border-bottom: 4px solid $brand-primary;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  .top-menu > ul > li > a.active:hover {
+    border-bottom: 4px solid $brand-primary;
+  }
+
+  .top-menu > ul > li:hover > a {
+    text-decoration: none;
+    border-bottom: 4px solid #9a9da6;
+  }
+
+  .top-menu > ul > li:hover > a.active {
+    text-decoration: none;
+    border-bottom: 4px solid $brand-primary;
+  }
+
+  .login-out {
+    margin-left: 20px;
+    padding-left: 10px;
+    border-left: 1px solid #e7e7eb;
+  }
+
+}
+
+//底部
+.layout-footer {
+  min-width: 768px;
+  background-color: #b8b9b9;
+  min-height: 60px;
+  line-height: 60px;
+  color: #f1f1f1;
+
+  .links li {
+    float: left;
+    margin-right: 10px;
+  }
+
+  a {
+    color: #f1f1f1;
+  }
+
+  a:hover {
+    color: #f1f1f1;
+  }
+}
+
+//中间主要区域
+.display-table {
+  display: table;
+  width: 100%
+}
+
+.layout-main {
+  margin: 20px auto; /*36px*/
+  background-color: #fff;
+}
+
+.layout-main > .row > .col-md-12 { //去掉默认槽宽(gutter) 默认的col有15px padding
+  padding: 0;
+}
+
+//左菜单区域
+.layout-menu {
+  width: 210px;
+  min-height: 500px;
+
+  .main-menu {
+    padding-top: 18px; //菜单顶部padding
+
+    //菜单项
+    .menu-item {
+      display: block;
+      height: 34px;
+      line-height: 34px;
+      padding-left: 30px;
+      text-decoration: none;
+    }
+
+    a {
+      color: $text-color;
+    }
+
+    //左图标
+    .menu-item .icon {
+      padding-right: 5px;
+      font-size: 16px;
+      color: #b2b2b2;
+    }
+
+    //不可点击菜单项
+    span.menu-item {
+      color: #8d8d8d;
+    }
+
+    //菜单项hover
+    a:hover {
+      background-color: #f4f5f9;
+    }
+
+    //激活项
+    .active a, .active .icon {
+      background-color: $brand-primary;
+      color: #fff;
+    }
+
+    //二级菜单
+    .level-2 a {
+      padding-left: 50px;
+    }
+
+  }
+
+}
+
+//内容区顶部
+.layout-content {
+  border-left: 1px solid #e7e7eb;
+  display: table-cell;
+  width: 100%;
+
+  //标题
+  .page-title {
+    padding: 15px 0 0 30px;
+    font-weight: bold;
+    font-size: 16px;
+  }
+
+  //选项卡
+  .top-nav li {
+    float: left;
+    margin-bottom: -1px;
+    position: relative;
+  }
+
+  .top-nav a {
+    color: $text-color;
+  }
+
+  .top-nav li a, .top-nav li span {
+    display: inline-block;
+    height: 40px;
+    padding: 10px 30px;
+    border-bottom: 1px solid #e7e7eb;
+    text-decoration: none;
+  }
+
+  .top-nav li a:hover {
+    border-bottom: 3px solid #9a9da6;
+  }
+
+  .top-nav li.active a,
+  .top-nav li.active span,
+  .top-nav li.active a:hover {
+    border-bottom: 3px solid $brand-primary;
+  }
+
+  //子选项卡
+  .content-top-sub {
+    background-color: #f4f5f9;
+    padding-left: 30px;
+  }
+
+  .sub-nav li {
+    float: left;
+    position: relative;
+    line-height: 35px;
+  }
+
+  .sub-nav .line {
+    color: #d9dadc;
+    margin: 0 10px;
+  }
+
+  .sub-nav li a {
+    color: #797979;
+    display: inline-block;
+    height: 35px;
+    text-decoration: none;
+  }
+
+  .sub-nav li.active a,
+  .sub-nav li.active span,
+  .sub-nav li.active a:hover {
+    color: $text-color;
+  }
+
+  .sub-nav li a:hover {
+    color: $text-color;
+    text-decoration: underline;
+  }
+
+  //选项卡下边线
+  .content-top {
+    border-bottom: 1px solid #e7e7eb;
+  }
+
+  //主内容区
+  .content-main {
+    margin-top: 15px;
+    padding-bottom: 20px;
+  }
+
+}
+
+//分页
+span.pagination {
+  padding: 3px;
+  text-align: center;
+  padding-right: 15px;
+
+  a, span {
+    border: #ddd 1px solid;
+    text-decoration: none;
+    color: #666;
+    padding: 5px 10px;
+    margin-left: 4px;
+  }
+
+  a:hover {
+    border: #a0a0a0 1px solid;
+  }
+
+  .active {
+    font-weight: bold;
+    background-color: #f0f0f0;
+  }
+
+  .disabled {
+    border: #f3f3f3 1px solid;
+    color: #aaa;
+  }
+}
+
+

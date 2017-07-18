@@ -8,9 +8,7 @@
 
     <title>Admin Template</title>
 
-    <link href="../../static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../../static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="../../static/admin/css/layout.css" rel="stylesheet">
+    <link href="css/layout.css" rel="stylesheet">
 
     <style>
         body {
@@ -93,7 +91,8 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="password">您的密码</label> <a class="pull-right" href="#" tabindex="60">忘记密码?</a>
+                                <label for="password">您的密码</label> <a class="pull-right" href="#"
+                                                                      tabindex="60">忘记密码?</a>
                                 <input name="password" type="password" class="form-control" id="password" tabindex="20">
                             </div>
 
@@ -126,11 +125,11 @@
 </div>
 
 <script>
-    function hideLoginForm(){
+    function hideLoginForm() {
         document.getElementById("login-form").style.display = "none";
         document.getElementById("ie-low").style.display = "block";
     }
-    function showLoginForm(){
+    function showLoginForm() {
         document.getElementById("login-form").style.display = "block";
         document.getElementById("ie-low").style.display = "none";
     }
@@ -139,20 +138,6 @@
         //alert("您的浏览器版本过低,请使用Chrome、Firefox、360极速浏览器,或升级至IE9.0以上!");
     }
 </script>
-
-
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-<script src="../../static/ie8/html5shiv.min.js"></script>
-<script src="../../static/ie8/respond.min.js"></script>
-<![endif]-->
-
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="../../static/jquery/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="../../static/bootstrap/js/bootstrap.min.js"></script>
-
 
 </body>
 </html>
