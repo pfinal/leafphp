@@ -406,6 +406,10 @@
                     var url = _this.href;
                     var method = $(_this).attr("data-method");
                     method = method || "GET";
+                    if (method.toUpperCase() == "GET") {
+                        window.location = url;
+                        return;
+                    }
                     $("<form>").attr({"method": method, "action": url}).appendTo("body").submit();
                 },
                 cancelValue: "取消",
