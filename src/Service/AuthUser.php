@@ -7,6 +7,7 @@ use Leaf\Exception\HttpException;
 use Leaf\Mail;
 use Leaf\Redirect;
 use Leaf\Request;
+use Leaf\Route;
 use Leaf\Session;
 use Leaf\Url;
 use Leaf\DB;
@@ -15,15 +16,23 @@ use Leaf\Validator;
 use Leaf\View;
 
 /**
- *
- * Route::any('register', 'AppBundle\Controller\AuthController@register');
- * Route::any('login', 'AppBundle\Controller\AuthController@login');
- * Route::any('logout', 'AppBundle\Controller\AuthController@logout');
- * Route::any('password/forgot', 'AppBundle\Controller\AuthController@forgot');
- * Route::any('password/reset', 'AppBundle\Controller\AuthController@reset');
+ * 用户认证
  */
 trait AuthUser
 {
+
+    /**
+     * 注册路由
+     */
+    public static function routes()
+    {
+        Route::any('register', get_called_class() . '@register');
+        Route::any('admin/login', get_called_class() . '@login');
+        Route::any('admin/logout', get_called_class() . '@logout');
+        Route::any('admin/password/forgot', get_called_class() . '@forgot');
+        Route::any('admin/password/reset', get_called_class() . '@reset');
+    }
+
     /**
      * 是否开启注册功能
      *

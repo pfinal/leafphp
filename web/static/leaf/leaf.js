@@ -16,6 +16,8 @@
 
 (function ($) {
 
+    leaf.messageIndex = 99999;
+
     /**
      * 弹窗提示
      *
@@ -33,7 +35,7 @@
 
         title = title || "系统提示";
         var d = dialog({
-            zIndex: 2048,
+            zIndex: messageIndex++,
             backdropOpacity: 0.4,
             title: title,
             content: "<div style='min-width:18em'>" + content + "</div>",
@@ -124,7 +126,7 @@
         }, time);
     }
 
-    leaf.messageIndex = 99999;
+
 
     /**
      *
@@ -397,7 +399,7 @@
             var title = _this.hasAttribute("data-dialog-title") ? _this.getAttribute("data-dialog-title") : "提示";
 
             var d = dialog({
-                zIndex: 2048,
+                //zIndex: 2048,
                 autofocus: false,
                 title: title,
                 content: "<div style='min-width:18em'>" + content + "</div>",
@@ -461,7 +463,7 @@
             }
 
             var d = dialog({
-                zIndex: 2048,
+                //zIndex: 2048,
                 autofocus: false,
                 title: title,
                 content: "<div style='min-width:18em'>" + content + "</div>",
