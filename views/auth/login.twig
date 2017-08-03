@@ -13,7 +13,7 @@
                             <div class="alert alert-danger">{{ app.session.getFlash('message') }}</div>
                         {% endif %}
 
-                        <form class="form-horizontal" method="POST" action="{{ url('login') }}">
+                        <form class="form-horizontal" method="POST" action="{{ url('login') }}" autocomplete="off">
 
                             <div class="form-group {# has-error #} ">
                                 <label class="col-md-4 control-label">用户名/邮箱</label>
