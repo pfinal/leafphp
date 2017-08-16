@@ -16,7 +16,7 @@ class Auth extends AuthManager
      */
     protected static function retrieveById($id)
     {
-        return DB::table(User::tableName())->asEntity(User::className())->findByPk($id);
+        return DB::table(User::tableName())->where(['status' => User::STATUS_ENABLE])->asEntity(User::className())->findByPk($id);
     }
 
     /**
