@@ -76,6 +76,17 @@ trait AuthUser
     }
 
     /**
+     * 重定向
+     *
+     * @param string $scene login|register|logout
+     * @return string
+     */
+    protected function redirectTo($scene)
+    {
+        return Url::to('/');
+    }
+
+    /**
      * 生成密码哈希
      * @param string $password
      * @return string
@@ -108,7 +119,7 @@ trait AuthUser
     {
         //已登录状态，直接跳转
         if (Auth::check()) {
-            return Redirect::to(Url::to('/'));
+            return Redirect::to($this->redirectTo('register'));
         }
 
         if ($request->isMethod('get')) {
@@ -155,7 +166,7 @@ trait AuthUser
 
         if ($userId > 0) {
             Auth::loginUsingId($userId);
-            return Redirect::to(Url::to('/'));
+            return Redirect::to($this->redirectTo('register'));
         } else {
             Session::setFlash('message', '系统错误，注册失败');
             return $this->registerView();
@@ -169,7 +180,7 @@ trait AuthUser
     {
         //已登录状态，直接跳转
         if (Auth::check()) {
-            return Redirect::to(Url::to('/'));
+            return Redirect::to($this->redirectTo('login'));
         }
 
         if ($request->isMethod('get')) {
@@ -181,15 +192,17 @@ trait AuthUser
 
         $loginId = $request->get('loginId', '');
 
-        //同时支持邮箱和帐号登录
+        //同时支持邮箱手机和帐号登录
         if (Util::isEmail($loginId)) {
             $query->where('email=?', [$loginId]);
+        } else if (Util::isMobile($loginId)) {
+            $query->where('mobile=?', [$loginId]);
         } else {
             $query->where('username=?', [$loginId]);
         }
 
         /** @var $user User */
-        $user = $query->findOne();
+        $user = $query->where(['status' => User::STATUS_ENABLE])->findOne();
 
         if ($this->passwordVerify($request->get('password'), $user['password_hash'])) {
 
@@ -197,7 +210,7 @@ trait AuthUser
 
             Session::set('last_login_at', @date('Y-m-d H:i:s'));
 
-            return Redirect::to(Session::getFlash('returnUrl', Url::to('/')));
+            return Redirect::to(Session::getFlash('returnUrl', $this->redirectTo('login')));
         }
 
         Session::setFlash('message', '用户名或密码不匹配');
@@ -211,7 +224,7 @@ trait AuthUser
     public function logout()
     {
         Auth::logout();
-        return Redirect::to(Url::to('/'));
+        return Redirect::to($this->redirectTo('logout'));
     }
 
     /**
@@ -220,7 +233,7 @@ trait AuthUser
     public function forgot(Request $request)
     {
         if (Auth::check()) {
-            return Redirect::to(Url::to('/')); //已登录
+            return Redirect::to($this->redirectTo('login')); //已登录
         }
 
         if ($request->isMethod('get')) {
@@ -270,7 +283,7 @@ trait AuthUser
     public function reset(Request $request)
     {
         if (Auth::check()) {
-            return Redirect::to(Url::to('/')); //已登录
+            return Redirect::to($this->redirectTo('login')); //已登录
         }
 
         if ($request->isMethod('get')) {
