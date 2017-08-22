@@ -23,8 +23,8 @@ $console = new ConsoleApplication();
 $console->add(new BundleCommand());
 $console->add(new EntityCommand());
 $console->add(new CurdCommand());
-//$console->add(new ListenCommand());
-//$console->add(new WorkCommand($app));
+$console->add(new ListenCommand());
+$console->add(new WorkCommand($app));
 
 if (file_exists(__DIR__ . '/config/commands.php')) {
     $commands = require __DIR__ . '/config/commands.php';
