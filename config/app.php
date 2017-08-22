@@ -1,6 +1,6 @@
 <?php
 
-// 应用基准目录
+//应用基准目录
 $app['path'] = dirname(__DIR__);
 
 $app->register(new \Leaf\Provider\LogServiceProvider());

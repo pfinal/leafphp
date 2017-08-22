@@ -18,7 +18,7 @@ use Leaf\View;
 /**
  * 用户认证
  */
-trait AuthUser
+trait AuthTrait
 {
 
     /**
@@ -27,10 +27,10 @@ trait AuthUser
     public static function routes()
     {
         Route::any('register', get_called_class() . '@register');
-        Route::any('admin/login', get_called_class() . '@login');
-        Route::any('admin/logout', get_called_class() . '@logout');
-        Route::any('admin/password/forgot', get_called_class() . '@forgot');
-        Route::any('admin/password/reset', get_called_class() . '@reset');
+        Route::any('login', get_called_class() . '@login');
+        Route::any('logout', get_called_class() . '@logout');
+        Route::any('password/forgot', get_called_class() . '@forgot');
+        Route::any('password/reset', get_called_class() . '@reset');
     }
 
     /**
