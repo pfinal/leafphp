@@ -9,6 +9,7 @@ $app->register(new \Leaf\Provider\TwigServiceProvider());
 $app->register(new \Leaf\Provider\SessionProvider());
 $app->register(new \Leaf\Provider\CaptchaProvider());
 $app->register(new \Leaf\Provider\CacheProvider());
+$app->register(new \Leaf\Provider\QueueProvider());
 
 //中间件
 $app['auth'] = 'Middleware\AuthMiddleware';
