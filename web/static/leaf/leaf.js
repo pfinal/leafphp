@@ -1,11 +1,8 @@
 /**
  * leaf.js
  *
- *  依赖artDialog
- *  <link href="static/art-dialog/css/ui-dialog.css" rel="stylesheet" />
- *  <script src="static/art-dialog/dist/dialog-min.js"></script>
- *
  *  <link href="static/leaf/css/leaf.css" rel="stylesheet" />
+ *  <script src="static/leaf/dialog.js"></script>
  *  <script src="static/leaf/leaf.js"></script>
  *
  * @author  Zou Yiliang
@@ -35,7 +32,7 @@
 
         title = title || "系统提示";
         var d = dialog({
-            zIndex: messageIndex++,
+            zIndex: leaf.messageIndex++,
             backdropOpacity: 0.4,
             title: title,
             content: "<div style='min-width:18em'>" + content + "</div>",
