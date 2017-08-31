@@ -8,7 +8,8 @@
         "swiftmailer/swiftmailer":"5.*",
         "myclabs/php-enum":"*",
         "twig/twig": "1.*",
-        "pfinal/queue": "*"
+        "pfinal/queue": "*",
+        "filp/whoops": "*"
     },
     "autoload": {
         "psr-4": {
