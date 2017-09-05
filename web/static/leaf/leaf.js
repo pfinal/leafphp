@@ -1,10 +1,5 @@
 /**
  * leaf.js
- *
- *  <link href="static/leaf/css/leaf.css" rel="stylesheet" />
- *  <script src="static/leaf/dialog.js"></script>
- *  <script src="static/leaf/leaf.js"></script>
- *
  * @author  Zou Yiliang
  * @date 20150531
  */
@@ -23,7 +18,7 @@
      */
     leaf.alert = function (content, title, success) {
         success = success || function () {
-            };
+        };
 
         if (typeof title == "function") {
             success = title;
@@ -57,8 +52,16 @@
             var d = {};
         } else {
             content = content || "正在加载, 请稍后 ...";
+
+            if (document.all && !document.addEventListener) {
+                // ie8 或以下
+                content = '<div class="" style="margin-top:0;text-align:center;"><span class="leaf-icon-loading"></span></div><div style="margin-top: 10px">' + content + '</div>';
+            } else {
+                content = '<div class="ui-dialog-loading" style="margin-top:0"></div><div style="margin-top: 10px">' + content + '</div>';
+            }
+
             var d = dialog({
-                content: '<div class="ui-dialog-loading" style="margin-top:0px">Loading..</div><div style="margin-top: 10px">' + content + '</div>',
+                content: content,
                 backdropOpacity: 0.05
             });
         }
@@ -109,7 +112,7 @@
             time = 2000;
         }
         callback = callback || function () {
-            }
+        }
 
         var d = dialog({
             //zIndex: 2048,
@@ -122,7 +125,6 @@
             callback();
         }, time);
     }
-
 
 
     /**
@@ -167,9 +169,9 @@
     leaf.confirm = function (content, success, cancel) {
 
         success = success || function () {
-            };
+        };
         cancel = cancel || function () {
-            };
+        };
 
         var d = dialog({
             //zIndex: 10000,
@@ -202,7 +204,7 @@
     leaf.show = function (selector, callback) {
         var obj = {};
         obj.callback = callback || function () {
-            };
+        };
 
         obj.elem = $(selector).show();
 
@@ -378,7 +380,7 @@
     leaf.getParam = function (key) {
         var url = location.href
         var index = url.indexOf('?')
-        if (index == -1)  return null
+        if (index == -1) return null
         var query = url.substr(index + 1, url.length)
         var GET = parse_str(query)
         if (!key || $.type(key) !== 'string') return GET

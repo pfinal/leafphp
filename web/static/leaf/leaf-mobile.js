@@ -1,11 +1,5 @@
 /**
- * leafjs
- *
- *  依赖 popup-1.1
- *  <link rel="stylesheet" href="static/popup/popup.css"/>
- *  <script src="static/popup/popup.min.js"></script>
- *  <link href="static/leaf/css/leaf.css" rel="stylesheet" />
- *  <script src="static/leaf/leaf-mobile.js"></script>
+ * leaf.js
  *
  * @author  Zou Yiliang
  * @date 20150531
