@@ -18,7 +18,8 @@ $app['csrf'] = 'Middleware\CsrfMiddleware';
 
 //数据库连接配置
 $app['db.config'] = array(
-    'dsn' => 'mysql:host=localhost;dbname=test',
+    'host' => 'localhost',
+    'database' => 'test',
     'username' => 'root',
     'password' => '',
     'charset' => 'utf8mb4',
