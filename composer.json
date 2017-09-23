@@ -9,7 +9,8 @@
         "myclabs/php-enum":"*",
         "twig/twig": "1.*",
         "pfinal/queue": "*",
-        "filp/whoops": "*"
+        "filp/whoops": "*",
+        "nesbot/carbon": "~1.*"
     },
     "autoload": {
         "psr-4": {
