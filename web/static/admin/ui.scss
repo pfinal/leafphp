@@ -43,11 +43,16 @@ li {
 //搜索表单
 .form-search {
   background-color: #f4f5f9;
-  padding: 15px;
+  padding: 10px;
 
   .form-group {
     margin-right: 20px;
-    padding-bottom: 10px;
+    line-height: 40px; //搜索框加的input自动换行后保持上下间距
+    //padding-bottom: 10px;
+  }
+
+  .form-control {
+    width: 130px;
   }
 
   label {

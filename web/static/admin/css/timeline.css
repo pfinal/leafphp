@@ -1,0 +1,31 @@
+.timeline li {
+    border-left: 1px solid #ccc;
+    position: relative;
+    line-height: 30px;
+}
+
+.timeline .node-icon {
+    background: url("../img/timeline.png") 73px -5px;
+    display: inline-block;
+    width: 15px;
+    height: 18px;
+    position: absolute;
+    top: 6px;
+    left: -5px;
+}
+
+.timeline .active .node-icon {
+    background: url("../img/timeline.png") #fff 0 -5px;
+}
+
+.timeline .date {
+    margin-left: 15px;
+    display: inline-block;
+    min-width: 80px;
+}
+
+.timeline .time {
+    display: inline-block;
+    min-width: 80px;
+}
+
