@@ -25,11 +25,11 @@ use Leaf\Util;
  * //提交表单时，移动到正式目录
  * $this->moveFromTemp($fileKey, 'uploads/avatar')
  *
- * 建议配置storage
+ * //配置存储目录
  * $app['storage'] = function () {
  *   return new \PFinal\Storage\Local([
- *       'basePath' => 'temp/',
- *       'baseUrl' => \Leaf\Url::asset('temp/', true),
+ *       'basePath' => $app['path'] . '/web/',
+ *       'baseUrl' => \Leaf\Url::asset('/', true),
  *   ]);
  * };
  *
