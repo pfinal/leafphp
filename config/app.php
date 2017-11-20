@@ -16,6 +16,14 @@ $app['auth'] = 'Middleware\AuthMiddleware';
 $app['cors'] = 'Middleware\CorsMiddleware';
 $app['csrf'] = 'Middleware\CsrfMiddleware';
 
+//模板中获取当前登录用户 {{app.user.username}}
+$app['twig.app'] = $app->extend('twig.app', function ($twigApp, $app) {
+    if (\Service\Auth::check()) {
+        $twigApp['user'] = \Service\Auth::getUser();
+    }
+    return $twigApp;
+});
+
 //数据库连接配置
 $app['db.config'] = array(
     'host' => 'localhost',
