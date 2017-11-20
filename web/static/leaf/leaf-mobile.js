@@ -17,7 +17,7 @@
      */
     leaf.alert = function (content, title, success) {
         success = success || function () {
-            };
+        };
 
         if (typeof title == "function") {
             success = title;
@@ -120,7 +120,7 @@
             time = 2000;
         }
         callback = callback || function () {
-            }
+        }
 
         popup.cute(content, time, callback);
 
@@ -142,9 +142,9 @@
     leaf.confirm = function (content, success, cancel) {
 
         success = success || function () {
-            };
+        };
         cancel = cancel || function () {
-            };
+        };
 
         popup.confirm(content, success, cancel);
     }
@@ -157,7 +157,7 @@
     leaf.show = function (selector, callback) {
 
         callback = callback || function () {
-            };
+        };
 
         var elem = $(selector);
         elem.show();
@@ -191,11 +191,16 @@
             div = $("#" + layerId);
         }
 
+        var _this = this;
+
         $.get(url, data, function (str) {
             div.html(str);
-            this.close = leaf.show("#" + layerId).close;
+            var o = leaf.show("#" + layerId);
+            _this.close = function () {
+                o.close();
+            }
         });
-        return this;
+        return _this;
     }
 
     /**
@@ -314,7 +319,7 @@
     leaf.getParam = function (key) {
         var url = location.href
         var index = url.indexOf('?')
-        if (index == -1)  return null
+        if (index == -1) return null
         var query = url.substr(index + 1, url.length)
         var GET = parse_str(query)
         if (!key || $.type(key) !== 'string') return GET

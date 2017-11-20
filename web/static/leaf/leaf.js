@@ -257,11 +257,16 @@
             div = $("#" + layerId);
         }
 
+        var _this = this;
+
         $.get(url, data, function (str) {
             div.html(str);
-            this.close = leaf.show("#" + layerId).close;
+            var o = leaf.show("#" + layerId);
+            _this.close = function () {
+                o.close();
+            }
         });
-        return this;
+        return _this;
     }
 
     /**

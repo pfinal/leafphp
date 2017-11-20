@@ -1,0 +1,78 @@
+<script src="{{ asset('static/jquery-file-upload/js/vendor/jquery.ui.widget.js') }}"></script>
+<script src="{{ asset('static/jquery-file-upload/js/jquery.iframe-transport.js') }}"></script>
+<script src="{{ asset('static/jquery-file-upload/js/jquery.fileupload.js') }}"></script>
+<script>
+    $(function () {
+        'use strict';
+
+        var url = '{{ url('product/upload') }}';
+        var mobileUploadUrl = "{{ url('product/mobileUpload', {_token: csrf_token()}, true) }}"
+
+        $('.fileupload').fileupload({
+            url: url,
+            dataType: 'json',
+            done: function (e, data) {
+                $(".file-upload-progress").hide(); //隐藏进度条
+                //e.target 当前点击的按扭
+                var showDiv = $(e.target).attr("data-show");
+                showImage(data.result.file, showDiv)
+            },
+            progressall: function (e, data) {
+                $('.file-upload-progress').show();
+                var progress = parseInt(data.loaded / data.total * 100, 10);
+                $('.file-upload-progress .progress-bar').css('width', progress + '%');
+            }
+        });
+
+        function showImage(file, showDivSel) {
+            var showDiv = $(showDivSel);
+            var tempUrl = file.thumbnailUrl._temp; //预览临时图片
+            $(showDiv).html('');
+            $('<img>').attr('src', tempUrl).css("height", "120px").appendTo(showDiv);
+            //ajax返回的数据中会有一个fileKey，放入js创建的隐藏input中，传到控制器，用于把文件从临时目录移动到正式目录
+            $('<input type="hidden" name="fileKey">').val(file.fileKey).appendTo(showDiv);
+        }
+
+        $(".js-from-mobile").click(function (event) {
+            var showDiv = $(event.target).attr("data-show")
+            //多取几次防重复
+            var tag = Math.random() + Math.random() + Math.random() + Math.random() + Math.random()
+            var url = mobileUploadUrl + "&tag=" + tag
+            //console.log(url)
+            window.myQrcode = leaf.ajaxShow(url + "&action=qrcode&url=" + encodeURIComponent(url))
+
+            setTimeout(function () {
+                checkMobileUpload(url, showDiv)
+            }, 3000)
+
+        })
+
+        function checkMobileUpload(mobileUploadUrl, showDiv) {
+            $.ajax({
+                type: "GET",
+                url: mobileUploadUrl,
+                data: {},
+                dataType: "json",
+                success: function (result) {
+                    if (result.status) {
+                        showImage(result.file, showDiv)
+
+                        window.myQrcode.close()
+
+                    } else {
+
+                        setTimeout(function () {
+                            checkMobileUpload(mobileUploadUrl, showDiv)
+                        }, 1000)
+                    }
+                },
+                error: function () {
+                    alert('出错了');
+                }
+            });
+        }
+
+
+    });
+</script>
+
