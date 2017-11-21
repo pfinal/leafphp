@@ -9,6 +9,8 @@
 
 (function ($) {
 
+    leaf.messageIndex = 99999;
+
     /**
      * 弹窗提示
      *
@@ -75,8 +77,6 @@
         return d;
     }
 
-    leaf.messageIndex = 99999;
-
     /**
      *
      * @param content
@@ -87,7 +87,8 @@
         type = type || "success";
         time = time || 2000;
         leaf.messageIndex++;
-        var message = $('<div class="leaf-message" style="position: absolute;top:100px;width:100%;text-align: center;z-index: ' + leaf.messageIndex + '"><span class="icon"></span><span  style="min-width: 300px;display: inline-block" class="alert alert-' + type + '">' + content + '</span></div>');
+        var fixedTop = 10 + parseInt($(document).scrollTop())
+        var message = $('<div class="leaf-message" style="position: absolute;top:' + fixedTop + 'px;width:100%;text-align: center;z-index: ' + leaf.messageIndex + '"><span class="icon"></span><span  style="min-width: 300px;display: inline-block" class="alert alert-' + type + '">' + content + '</span></div>');
         $("body").append(message);
         setTimeout(function () {
             message.remove();
