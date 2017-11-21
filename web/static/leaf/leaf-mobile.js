@@ -87,7 +87,7 @@
         type = type || "success";
         time = time || 2000;
         leaf.messageIndex++;
-        var fixedTop = 10 + parseInt($(document).scrollTop())
+        var fixedTop = 10
         var message = $('<div class="leaf-message" style="position: absolute;top:' + fixedTop + 'px;width:100%;text-align: center;z-index: ' + leaf.messageIndex + '"><span class="icon"></span><span  style="min-width: 300px;display: inline-block" class="alert alert-' + type + '">' + content + '</span></div>');
         $("body").append(message);
         setTimeout(function () {
