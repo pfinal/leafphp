@@ -23,6 +23,11 @@
     background-position: right;
 }
 
+.step-bar .pprev {
+    background: url("../img/bg-process.png") no-repeat 0 -44px;
+    background-position: right 0;
+}
+
 .step-bar .next {
     background: url("../img/bg-process.png") no-repeat 0 -88px;
 }
