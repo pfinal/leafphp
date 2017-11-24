@@ -4,6 +4,7 @@ namespace Middleware;
 
 use Leaf\Application;
 use Leaf\Exception\HttpException;
+use Leaf\Log;
 use Leaf\Request;
 use Leaf\Session;
 use Leaf\Util;
@@ -48,14 +49,14 @@ class CsrfMiddleware
         return self::getTokenFromRequest($request) == static::getTokenFromSession();
     }
 
-    protected function getTokenFromRequest(Request $request)
+    public static function getTokenFromRequest(Request $request)
     {
         $token = $request->get('_token', $request->headers->get('X-CSRF-TOKEN'));
 
         return $token;
     }
 
-    protected function getTokenFromSession()
+    public static function getTokenFromSession()
     {
         $token = Session::get('_token');
         if ($token == null) {
