@@ -14,7 +14,7 @@ use Leaf\Util;
  *
  * form:
  * <form method="POST" action="/profile">
- *      <input type="hidden" name="_token" value="{{ csrf_token()}}">
+ *      <input type="hidden" name="_token" value="{{ csrf_token() }}">
  * </form>
  *
  * ajax:
