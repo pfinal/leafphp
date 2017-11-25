@@ -24,6 +24,9 @@ $app['twig.app'] = $app->extend('twig.app', function ($twigApp, $app) {
     return $twigApp;
 });
 
+//事件
+include __DIR__ . '/event.php';
+
 //数据库连接配置
 $app['db.config'] = array(
     'host' => 'localhost',
