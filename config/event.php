@@ -1,5 +1,6 @@
 <?php
 
+//composer require symfony/event-dispatcher
 $app['events'] = function () {
     $dispatcher = new \Symfony\Component\EventDispatcher\EventDispatcher();
 
