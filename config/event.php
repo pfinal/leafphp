@@ -70,7 +70,7 @@ $app['events'] = function () {
 //    public static function getSubscribedEvents()
 //    {
 //        return [
-//            TestEvent::class => 'test',
+//            TestEvent::className() => 'test',
 //        ];
 //    }
 //
