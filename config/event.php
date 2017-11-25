@@ -6,7 +6,7 @@ $app['events'] = function () {
     $dispatcher = new \Symfony\Component\EventDispatcher\EventDispatcher();
 
     $listeners = [
-        // 'TestEvent\TestNotification'
+        // 'Listener\TestNotification'
     ];
 
     foreach ($listeners as $listener) {
