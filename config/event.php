@@ -1,13 +1,16 @@
 <?php
 
 //composer require symfony/event-dispatcher
+
 $app['events'] = function () {
     $dispatcher = new \Symfony\Component\EventDispatcher\EventDispatcher();
 
-    $events = [];
+    $listeners = [
+        // 'TestEvent\TestNotification'
+    ];
 
-    foreach ($events as $event) {
-        $dispatcher->addSubscriber(new $event);
+    foreach ($listeners as $listener) {
+        $dispatcher->addSubscriber(new $listener);
     }
 
     return $dispatcher;
