@@ -9,8 +9,6 @@
 
 (function ($) {
 
-    leaf.messageIndex = 99999;
-
     /**
      * 弹窗提示
      *
@@ -77,6 +75,8 @@
         return d;
     }
 
+    leaf.messageIndex = 99999;
+
     /**
      *
      * @param content
@@ -87,8 +87,7 @@
         type = type || "success";
         time = time || 2000;
         leaf.messageIndex++;
-        var fixedTop = 10
-        var message = $('<div class="leaf-message" style="position: absolute;top:' + fixedTop + 'px;width:100%;text-align: center;z-index: ' + leaf.messageIndex + '"><span class="icon"></span><span  style="min-width: 300px;display: inline-block" class="alert alert-' + type + '">' + content + '</span></div>');
+        var message = $('<div class="leaf-message" style="position: absolute;top:100px;width:100%;text-align: center;z-index: ' + leaf.messageIndex + '"><span class="icon"></span><span  style="min-width: 300px;display: inline-block" class="alert alert-' + type + '">' + content + '</span></div>');
         $("body").append(message);
         setTimeout(function () {
             message.remove();
@@ -181,8 +180,16 @@
     /**
      * 弹出显示ajax获取的内容
      * @param url
+     * @param data
+     * @param callback 关闭时执行
      */
-    leaf.ajaxShow = function (url, data) {
+    leaf.ajaxShow = function (url, data, callback) {
+        callback = callback || function () {
+        }
+        if (typeof data == "function") {
+            callback = data
+            data = {}
+        }
         var layerId = "leafAjaxPopupLayer";
         var div;
         if ($("#" + layerId).length == 0) {
@@ -196,10 +203,12 @@
 
         $.get(url, data, function (str) {
             div.html(str);
-            var o = leaf.show("#" + layerId);
+
+            var o = leaf.show("#" + layerId, callback);
             _this.close = function () {
                 o.close();
             }
+
         });
         return _this;
     }
@@ -263,7 +272,7 @@
     /**
      * 将 Date 转化为指定格式的String
      * @param date     date = new Date();      date = new Date(Linux时间戳*1000):
-     * @param format "yyyy-m-d h:i:s"
+     * @param fmt "yyyy-m-d h:i:s"
      * @returns string
      */
     leaf.dateFormat = function (date, fmt) {

@@ -137,8 +137,7 @@
         type = type || "success";
         time = time || 2000;
         leaf.messageIndex++;
-        var fixedTop = 10
-        var message = $('<div class="leaf-message" style="position: fixed;top:' + fixedTop + 'px;width:100%;text-align: center;z-index: ' + leaf.messageIndex + '"><span class="icon"></span><span  style="min-width: 300px;display: inline-block" class="alert alert-' + type + '">' + content + '</span></div>');
+        var message = $('<div class="leaf-message" style="position: fixed;top:10px;width:100%;text-align: center;z-index: ' + leaf.messageIndex + '"><span class="icon"></span><span  style="min-width: 300px;display: inline-block" class="alert alert-' + type + '">' + content + '</span></div>');
         $("body").append(message);
         setTimeout(function () {
             message.remove();
@@ -247,8 +246,17 @@
     /**
      * 弹出显示ajax获取的内容
      * @param url
+     * @param data
+     * @param callback 关闭时执行
      */
-    leaf.ajaxShow = function (url, data) {
+    leaf.ajaxShow = function (url, data, callback) {
+        callback = callback || function () {
+        }
+        if (typeof data == "function") {
+            callback = data
+            data = {}
+        }
+
         var layerId = "leafAjaxPopupLayer";
         var div;
         if ($("#" + layerId).length == 0) {
@@ -260,13 +268,26 @@
 
         var _this = this;
 
-        $.get(url, data, function (str) {
-            div.html(str);
-            var o = leaf.show("#" + layerId);
-            _this.close = function () {
-                o.close();
+        var loading = leaf.loading().start()
+
+        $.ajax({
+            type: "GET",
+            url: url,
+            data: data,
+            dataType: "text",
+            success: function (str) {
+                loading.stop()
+                div.html(str);
+                var o = leaf.show("#" + layerId, callback);
+                _this.close = function () {
+                    o.close();
+                }
+            },
+            error: function () {
+                loading.stop()
             }
         });
+
         return _this;
     }
 

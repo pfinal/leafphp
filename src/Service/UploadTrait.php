@@ -25,7 +25,7 @@ use Middleware\CsrfMiddleware;
  * $this->moveFromTemp($fileKey, 'uploads/avatar')
  *
  * //配置存储目录 先安装组件 composer require pfinal/storage
- * $app['storage'] = function () {
+ * $app['storage'] = function () use ($app) {
  *   return new \PFinal\Storage\Local([
  *       'basePath' => $app['path'] . '/web/',
  *       'baseUrl' => \Leaf\Url::asset('/', true),
