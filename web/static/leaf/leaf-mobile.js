@@ -12,21 +12,43 @@
     /**
      * 弹窗提示
      *
-     * leaf.alert("提示信息", callback)
-     * leaf.alert("提示信息", "标题", callback)
+     * leaf.alert("提示信息", callback, {title: '标题'})
      */
-    leaf.alert = function (content, title, success) {
-        success = success || function () {
-        };
+    leaf.alert = function (content, success, options) {
 
-        if (typeof title == "function") {
-            success = title;
-            title = undefined;
+        //兼容 leaf.alert("提示信息", "标题", callback)
+        var title = undefined
+        if (typeof success === "string") {
+            title = success
+            success = options
+            options = undefined
         }
 
-        title = title || "系统提示";
+        var defaultOptions = {title: ""}
+        options = options || defaultOptions
 
-        popup.alert(content, success);
+        for (var key in defaultOptions) {
+            if (!(key in options)) {
+                options[key] = defaultOptions[key]
+            }
+        }
+
+        //兼容 leaf.alert("提示信息", "标题", callback)
+        if (typeof title !== "undefined") {
+            options.title = title
+        }
+
+        success = success || function () {
+        }
+
+        if (window.weui && typeof window.weui.alert === "function") {
+            weui.alert(content, success, options)
+        } else if (window.popup && typeof window.popup.alert === "function") {
+            popup.alert(content, success)
+        } else {
+            alert(content)
+            success()
+        }
     }
 
     /**
@@ -58,7 +80,16 @@
                 d.btn.html("<span class='leaf-icon-loading'></span> " + loadingText);
 
             } else {
+
                 popup.loading(true);
+
+                //weui的loading有点丑
+
+                //if (window.weui && typeof window.weui.loading === "function") {
+                //    d.weuiLoading = weui.loading('loading');
+                //} else {
+                //   popup.loading(true);
+                //}
             }
 
             return d;
@@ -69,7 +100,14 @@
                 d.btn.removeClass("disabled").removeAttr("disabled");
                 d.btn.html(d.btn.data("oldHtml"));
             } else {
-                popup.loading(false);
+
+                // if (window.weui && typeof window.weui.loading === "function") {
+                //     d.weuiLoading.hide()
+                // } else {
+                //     popup.loading(false)
+                // }
+
+                popup.loading(false)
             }
         };
         return d;
@@ -104,26 +142,49 @@
     };
 
     /**
-     * 自动消失 弹窗提示
+     * 弹窗提示，自动关闭 一般用于操作成功时的提示场景
      *
+     * leaf.toast('操作成功', {duration: 3000, callback:function(){}})
+     *
+     * 兼容旧版如下方式调用:
      * leaf.toast()
      * leaf.toast('操作成功')
      * leaf.toast('操作成功', 3000)
-     * leaf.toast('操作成功',function(){})
+     * leaf.toast('操作成功', function(){})
+     * leaf.toast('操作成功', 3000, function(){})
      */
-    leaf.toast = function (content, time, callback) {
+    leaf.toast = function (content, options, callback) {
 
         content = content || '操作成功';
-        time = time || 2000;
-        if (typeof time == "function") {
-            callback = time;
-            time = 2000;
-        }
-        callback = callback || function () {
+
+        if (typeof  options === "number") {
+            callback = callback || function () {
+
+            }
+            options = {duration: options, callback: callback}
         }
 
-        popup.cute(content, time, callback);
+        if (typeof options === "function") {
+            options = {callback: options}
+        }
 
+        var defaultOptions = {
+            duration: 2000, callback: function () {
+            }
+        }
+
+        options = options || defaultOptions
+        for (var key in defaultOptions) {
+            if (!(key in options)) {
+                options[key] = defaultOptions[key]
+            }
+        }
+
+        if (window.weui && typeof window.weui.toast === "function") {
+            window.weui.toast(content, options)
+        } else {
+            popup.cute(content, options.duration, options.callback)
+        }
     }
 
     /**
@@ -146,7 +207,17 @@
         cancel = cancel || function () {
         };
 
-        popup.confirm(content, success, cancel);
+        if (window.weui && typeof window.weui.confirm === "function") {
+            weui.confirm(content, success, cancel);
+        } else if (window.popup && typeof window.popup.confirm === "function") {
+            popup.confirm(content, success, cancel);
+        } else {
+            if (confirm(content)) {
+                success()
+            } else {
+                cancel()
+            }
+        }
     }
 
     /**

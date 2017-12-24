@@ -24,6 +24,9 @@
 
     <link href="css/leaf.css" rel="stylesheet"/>
 
+    <link rel="stylesheet" href="//res.wx.qq.com/open/libs/weui/1.1.2/weui.min.css">
+    <script src="//res.wx.qq.com/open/libs/weuijs/1.1.3/weui.min.js"></script>
+
 </head>
 <body>
 
@@ -64,8 +67,8 @@
     });
 
     $(".js-alert").click(function () {
-        leaf.alert("测试", function () {
-            alert(11);
+        leaf.alert("操作成功", function () {
+            //这里是点确定之后，执行的代码
         });
     });
 
@@ -80,9 +83,29 @@
 
     $(".js-cute").click(function () {
 
-        leaf.toast("操作成功", function () {
-            alert('已自动关闭')
-        });
+
+        // leaf.toast("操作成功", function () {
+        //     console.log('已自动关闭1')
+        // });
+
+        leaf.toast('操作成功', {
+            duration: 1000, callback: function () {
+                console.log('已自动关闭2')
+            }
+        })
+
+        // leaf.toast()
+
+        // leaf.toast('操作成功3')
+
+        // leaf.toast('操作成功', 1000);        return;
+
+
+        // leaf.toast('操作成功', 1000, function () {
+        //     console.log('已自动关闭4')
+        // })
+
+
     });
     $(".js-show-div").click(function () {
 
