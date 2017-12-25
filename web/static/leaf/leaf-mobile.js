@@ -81,15 +81,14 @@
 
             } else {
 
-                popup.loading(true);
-
                 //weui的loading有点丑
-
-                //if (window.weui && typeof window.weui.loading === "function") {
-                //    d.weuiLoading = weui.loading('loading');
-                //} else {
-                //   popup.loading(true);
-                //}
+                if (window.popup && typeof window.popup.loading === "function") {
+                    popup.loading(true);
+                } else if (window.weui && typeof window.weui.loading === "function") {
+                    d.weuiLoading = weui.loading('loading');
+                } else {
+                    //不支持loading
+                }
             }
 
             return d;
@@ -101,11 +100,13 @@
                 d.btn.html(d.btn.data("oldHtml"));
             } else {
 
-                // if (window.weui && typeof window.weui.loading === "function") {
-                //     d.weuiLoading.hide()
-                // } else {
-                //     popup.loading(false)
-                // }
+                if (window.popup && typeof window.popup.loading === "function") {
+                    popup.loading(false)
+                } else if (window.weui && typeof window.weui.loading === "function") {
+                    d.weuiLoading.hide()
+                } else {
+                    //不支持loading
+                }
 
                 popup.loading(false)
             }
@@ -169,7 +170,7 @@
         }
 
         var defaultOptions = {
-            duration: 2000, callback: function () {
+            duration: 1500, callback: function () {
             }
         }
 
@@ -180,10 +181,13 @@
             }
         }
 
-        if (window.weui && typeof window.weui.toast === "function") {
-            window.weui.toast(content, options)
-        } else {
+        if (window.popup && typeof window.popup.cute === "function") {
             popup.cute(content, options.duration, options.callback)
+        } else if (window.weui && typeof window.weui.toast === "function") {
+            weui.toast(content, options)
+        } else {
+            alert(content)
+            callback()
         }
     }
 
