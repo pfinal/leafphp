@@ -347,6 +347,21 @@
         return reg.test(str);
     }
 
+    leaf.isWeixin = function () {
+        var ua = navigator.userAgent.toLowerCase();
+        return ua.indexOf('micromessenger') >= 0;
+    }
+
+    leaf.isAndroid = function () {
+        var ua = navigator.userAgent.toLowerCase();
+        return ua.indexOf('android') >= 0;
+    }
+
+    leaf.isIos = function () {
+        var ua = navigator.userAgent.toLowerCase();
+        return (ua.indexOf('iphone') >= 0) || (ua.indexOf('ipad') >= 0);
+    }
+
     /**
      * 将 Date 转化为指定格式的String
      * @param date
