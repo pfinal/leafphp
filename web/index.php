@@ -1,12 +1,14 @@
 <?php
 
 // composer class autoload
-$loader = require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
 
-// create app
-$app = new \Leaf\Application();
+// keep the global namespace clean
+call_user_func(function () {
 
-// config
-require __DIR__ . '/../config/app.php';
+    $app = new \Leaf\Application();
 
-$app->run();
+    require __DIR__ . '/../config/app.php';
+
+    $app->run();
+});
