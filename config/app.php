@@ -18,14 +18,11 @@ $app['csrf'] = 'Middleware\CsrfMiddleware';
 
 //模板中获取当前登录用户 {{app.user.username}}
 $app['twig.app'] = $app->extend('twig.app', function ($twigApp, $app) {
-    if (\Service\Auth::check()) {
-        $twigApp['user'] = \Service\Auth::getUser();
-    }
+    $twigApp['user'] = function () {
+        return \Service\Auth::getUser();
+    };
     return $twigApp;
 });
-
-//事件
-// include __DIR__ . '/event.php';
 
 //数据库连接配置
 $app['db.config'] = array(
@@ -40,3 +37,6 @@ $app['db.config'] = array(
 if (file_exists(__DIR__ . '/app-local.php')) {
     require __DIR__ . '/app-local.php';
 }
+
+//事件
+include __DIR__ . '/event.php';
