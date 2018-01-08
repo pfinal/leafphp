@@ -12,6 +12,9 @@
         "nesbot/carbon": "~1.0",
         "symfony/var-dumper": "*"
     },
+    "require-dev": {
+        "filp/whoops": "*"
+    },
     "autoload": {
         "psr-4": {
           "": ["src\\"]
