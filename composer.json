@@ -9,7 +9,8 @@
         "myclabs/php-enum":"*",
         "twig/twig": "1.*",
         "pfinal/queue": "*",
-        "nesbot/carbon": "~1.0"
+        "nesbot/carbon": "~1.0",
+        "symfony/var-dumper": "*"
     },
     "autoload": {
         "psr-4": {
