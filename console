@@ -8,14 +8,13 @@ define('COMMAND_PATH', __DIR__);
 $loader = require_once __DIR__ . '/vendor/autoload.php';
 
 use Leaf\Application;
+use Leaf\Console\UpCommand;
+use Leaf\Console\DownCommand;
 use Leaf\Generator\BundleCommand;
 use Leaf\Generator\EntityCommand;
 use Leaf\Generator\CurdCommand;
-use Leaf\Console\UpCommand;
-use Leaf\Console\DownCommand;
 use PFinal\Queue\ListenCommand;
 use PFinal\Queue\WorkCommand;
-
 use Symfony\Component\Console\Application as ConsoleApplication;
 
 $app = new Application();
