@@ -10,7 +10,7 @@
         "twig/twig": "1.*",
         "pfinal/queue": "*",
         "nesbot/carbon": "~1.0",
-        "robmorgan/phinx": "~0.9",
+        "robmorgan/phinx": "0.9.*",
         "symfony/var-dumper": "*"
     },
     "require-dev": {
