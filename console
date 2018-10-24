@@ -12,6 +12,7 @@ use Leaf\Console\UpCommand;
 use Leaf\Console\DownCommand;
 use Leaf\Generator\BundleCommand;
 use Leaf\Generator\EntityCommand;
+use Leaf\Generator\ApiCommand;
 use Leaf\Generator\CurdCommand;
 use PFinal\Queue\ListenCommand;
 use PFinal\Queue\WorkCommand;
@@ -25,6 +26,7 @@ $console = new ConsoleApplication();
 $console->add(new BundleCommand());
 $console->add(new EntityCommand());
 $console->add(new CurdCommand());
+$console->add(new ApiCommand());
 $console->add(new ListenCommand());
 $console->add(new WorkCommand($app));
 

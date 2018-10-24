@@ -13,9 +13,7 @@
         "robmorgan/phinx": "0.9.*",
         "symfony/var-dumper": "*"
     },
-    "require-dev": {
-        "filp/whoops": "*"
-    },
+    "require-dev": {},
     "autoload": {
         "psr-4": {
           "": ["src\\"]
