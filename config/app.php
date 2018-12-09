@@ -11,6 +11,9 @@ $app->register(new \Leaf\Provider\CaptchaProvider());
 $app->register(new \Leaf\Provider\CacheProvider());
 $app->register(new \Leaf\Provider\QueueProvider());
 
+//如果开启路由缓存，则不支持使用闭包路由
+$app['route.cache'] = false;
+
 //中间件
 $app['auth'] = 'Middleware\AuthMiddleware';
 $app['cors'] = 'Middleware\CorsMiddleware';

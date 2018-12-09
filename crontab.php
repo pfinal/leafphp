@@ -10,8 +10,8 @@ require_once __DIR__ . '/vendor/autoload.php';
 use Workerman\Worker;
 use \Workerman\Lib\Timer;
 
-Worker::$logFile = __DIR__ . '/app/runtime/crontab.log';
-Worker::$pidFile = __DIR__ . '/app/runtime/crontab.pid';
+Worker::$logFile = __DIR__ . '/runtime/crontab.log';
+Worker::$pidFile = __DIR__ . '/runtime/crontab.pid';
 
 $task = new Worker();
 
