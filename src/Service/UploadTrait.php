@@ -7,7 +7,6 @@ use Leaf\Cache;
 use Leaf\Json;
 use Leaf\Log;
 use Leaf\Request;
-use Leaf\Session;
 use Leaf\UploadedFile;
 use Leaf\Url;
 use Leaf\Util;
@@ -75,8 +74,10 @@ trait UploadTrait
             $file['fileKey'] = Util::guid();
 
             //如果是api，注意不要使用session
-            Session::setFlash($file['fileKey'], $file);
-            Session::setFlash($file['fileKey'] . '.config', $config);
+            //Session::setFlash($file['fileKey'], $file);
+            //Session::setFlash($file['fileKey'] . '.config', $config);
+            Cache::set($file['fileKey'], $file, 60 * 10);
+            Cache::set($file['fileKey'] . '.config', $config, 60 * 10);
 
             //云存储
             if (isset(Application::$app['storage'])) {
@@ -113,11 +114,17 @@ trait UploadTrait
     {
         $fileKey = trim($fileKey);
 
-        if (empty($fileKey) || ($fileInfo = Session::getFlash($fileKey)) == null) {
+        //if (empty($fileKey) || ($fileInfo = Session::getFlash($fileKey)) == null) {
+        //    return '';
+        //}
+
+        if (empty($fileKey) || ($fileInfo = Cache::get($fileKey)) == null) {
             return '';
         }
 
-        $config = Session::getFlash($fileKey . '.config');
+        $config = Cache::get($fileKey . '.config');
+        Cache::delete($fileKey);
+        Cache::delete($fileKey . '.config');
 
         //云存储
         if (isset(Application::$app['storage'])) {
@@ -203,7 +210,8 @@ trait UploadTrait
                 return Json::render(['status' => false]);
             }
 
-            Session::setFlash($fileInfo['file']['fileKey'], $fileInfo['file']);
+            //Session::setFlash($fileInfo['file']['fileKey'], $fileInfo['file']);
+            Cache::set($fileInfo['file']['fileKey'], $fileInfo['file'], 60 * 10);
             return Json::render($fileInfo);
         }
 
