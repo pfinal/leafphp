@@ -15,10 +15,10 @@
                         <form class="form-horizontal" method="POST" action="{{ url('password/forgot') }}">
 
                             <div class="form-group {# has-error #} ">
-                                <label for="email" class="col-md-4 control-label">邮箱</label>
+                                <label for="email" class="col-md-4 control-label">手机/邮箱</label>
 
                                 <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control" name="email"
+                                    <input id="email" type="text" class="form-control" name="email"
                                            value="{{ app.request.get('email')|default('') }}" required>
 
                                     {#<span class="help-block">
@@ -31,7 +31,7 @@
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">
                                     <button type="submit" class="btn btn-primary">
-                                        发送重置密码连接
+                                        下一步
                                     </button>
 
                                     <a class="btn btn-link" href="{{ url('login') }}">返回登录?</a>

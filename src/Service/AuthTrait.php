@@ -3,17 +3,19 @@
 namespace Service;
 
 use Entity\User;
+use Leaf\Application;
+use Leaf\Cache;
 use Leaf\Exception\HttpException;
+use Leaf\Json;
 use Leaf\Mail;
 use Leaf\Redirect;
 use Leaf\Request;
-use Leaf\Route;
 use Leaf\Session;
 use Leaf\Url;
 use Leaf\DB;
 use Leaf\Util;
-use Leaf\Validator;
 use Leaf\View;
+use Util\SmsThrottle;
 
 /**
  * 用户认证
@@ -31,6 +33,9 @@ trait AuthTrait
         Route::any('logout', get_called_class() . '@logout');
         Route::any('password/forgot', get_called_class() . '@forgot');
         Route::any('password/reset', get_called_class() . '@reset');
+        Route::any('password/resetByMobile', get_called_class() . '@resetByMobile');
+        Route::any('password/sendSms', get_called_class() . '@sendSms');
+
     }
 
     /**
@@ -243,6 +248,11 @@ trait AuthTrait
         $email = $request->get('email');
 
         if (!Util::isEmail($email)) {
+
+            if (Util::isMobile($email)) {
+                return Redirect::to(Url::to('admin/password/resetByMobile', ['mobile' => $email]));
+            }
+
             Session::setFlash('message', '请输入正确邮箱');
             return $this->forgotView();
         }
@@ -275,6 +285,124 @@ trait AuthTrait
         }
 
         return $this->forgotView();
+    }
+
+    /**
+     * 发送手机短信验证码
+     *
+     * method
+     *      POST
+     *
+     * params
+     *      mobile         手机号码
+     *      captcha_code   图形验证码,默认传入空字符串即可。当频繁调用时,此字段启用
+     *      captcha_key    图形验证码key,默认传入空字符串即可。调用`api/image/captcha`接口得到
+     *
+     * response
+     *      {"status": true,  "data": "发送成功"}
+     *
+     *      图片验证码无效
+     *      {"status": false, "data": "图片验证码错误", "code": "INVALID_CAPTCHA"}
+     *
+     */
+    public function sendSms(Request $request, Application $app)
+    {
+        $mobile = $request->get('mobile');
+        if (!Util::isMobile($mobile)) {
+            return Json::renderWithFalse('手机格式不正确');
+        }
+
+        $ips = $request->getClientIps();
+        $extra = ['ip' => end($ips)];
+
+        $smsThrottle = SmsThrottle::instance();
+
+        //是否启用图型验证码
+        if ($smsThrottle->enableCaptcha($mobile, $extra)) {
+
+            $bool = \Util\Captcha::validateCode($request->get('captcha_key', ''), $request->get('captcha_code', ''));
+            if (!$bool) {
+                return Json::renderWithFalse('图片验证码错误', 'INVALID_CAPTCHA');
+            }
+        }
+
+        //同一号码发送频率检测
+        if (!$smsThrottle->check($mobile, $extra, $error)) {
+            return Json::renderWithFalse($error);
+        }
+
+        $code = rand(100000, 999999);
+
+        //开发环境不发送
+        $isSend = $app->getEnv() != 'dev';
+        //$isSend = false;
+
+        if ($isSend) {
+            $error = '';
+            $bool = $app['sms']->sendCode($mobile, $code, $error);
+            if ($bool) {
+                $message = '发送成功，请查收短信';
+            } else {
+                $message = '发送失败 ' . $error;
+                return Json::renderWithFalse($message);
+            }
+        } else {
+            $message = '您的验证码为:' . $code . ' [短信服务未启用]';
+        }
+
+        //过期时间(秒)
+        $expiresIn = 60 * 10;
+
+        $key = str_replace('-', '', Util::guid());
+        Cache::set('verification:' . $key, ['mobile' => (string)$mobile, 'verificationCode' => (string)$code], $expiresIn);
+
+        return Json::renderWithTrue(['verificationKey' => $key, 'message' => $message, 'expires_in' => $expiresIn]);
+    }
+
+    /**
+     * 手机短信重置密码
+     */
+    public function resetByMobile(Request $request)
+    {
+        if ($request->isMethod('post')) {
+
+            $mobile = $request->get('mobile');
+            $password = $request->get('password');
+
+            //验证码
+            $verificationKey = (string)$request->get('verificationKey', '');
+            $verificationCode = (string)trim($request->get('verificationCode', ''));
+
+            //对比服务端存放的验证码信息
+            $mobileAndCode = Cache::get('verification:' . $verificationKey);
+            if ($mobileAndCode == null
+                || $mobileAndCode['mobile'] !== $mobile
+                || empty($verificationCode)
+                || $verificationCode !== $mobileAndCode['verificationCode']) {
+
+                return Json::renderWithFalse('短信验证码无效', 'INVALID_VERIFICATION_CODE');
+            }
+            Cache::delete('verification:' . $verificationKey);
+
+            /** @var User $user */
+            $user = User::where('mobile=?', $mobile)->findOne();
+            if ($user == null) {
+                return Json::renderWithFalse('手机号未注册');
+            }
+
+            if ($user->status != User::STATUS_ENABLE) {
+                return Json::renderWithFalse('用户状态异常');
+            }
+
+            if ($user->resetPassword($password)) {
+                return Json::renderWithTrue('操作成功');
+            } else {
+                return Json::renderWithFalse('重置密码失败');
+            }
+
+        }
+
+        return View::render('auth/password/mobile.twig');
     }
 
     /**

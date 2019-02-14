@@ -8,6 +8,7 @@
     <title>{% block title %}{% endblock %}</title>
 
     <link rel="stylesheet" href="{{ asset('static/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset("static/art-dialog/css/ui-dialog.css") }}"/>
 
     {% block css %}
     {% endblock %}
@@ -33,6 +34,9 @@
 
 <script src="{{ asset('static/jquery/jquery.min.js') }}"></script>
 <script src="{{ asset('static/bootstrap/js/bootstrap.min.js') }}"></script>
+
+<script src="{{ asset('static/art-dialog/dist/dialog-min.js') }}"></script>
+<script src="{{ asset('static/leaf/leaf.js') }}"></script>
 
 {% block js %}
 {% endblock %}
