@@ -10,10 +10,12 @@ use Leaf\Json;
 use Leaf\Mail;
 use Leaf\Redirect;
 use Leaf\Request;
+use Leaf\Route;
 use Leaf\Session;
 use Leaf\Url;
 use Leaf\DB;
 use Leaf\Util;
+use Leaf\Validator;
 use Leaf\View;
 use Util\SmsThrottle;
 
@@ -22,7 +24,6 @@ use Util\SmsThrottle;
  */
 trait AuthTrait
 {
-
     /**
      * 注册路由
      */
@@ -394,7 +395,12 @@ trait AuthTrait
                 return Json::renderWithFalse('用户状态异常');
             }
 
-            if ($user->resetPassword($password)) {
+            $data = [
+                'password_hash' => static::passwordHash($password),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ];
+
+            if (DB::table(User::tableName())->where('id=?', [$user->getId()])->update($data)) {
                 return Json::renderWithTrue('操作成功');
             } else {
                 return Json::renderWithFalse('重置密码失败');
