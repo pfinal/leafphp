@@ -11,6 +11,7 @@
         "pfinal/queue": "*",
         "nesbot/carbon": "~1.0",
         "robmorgan/phinx": "0.9.*",
+        "phpmyadmin/sql-parser": "^4.3",
         "symfony/var-dumper": "*"
     },
     "require-dev": {},

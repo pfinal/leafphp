@@ -251,7 +251,7 @@ trait AuthTrait
         if (!Util::isEmail($email)) {
 
             if (Util::isMobile($email)) {
-                return Redirect::to(Url::to('admin/password/resetByMobile', ['mobile' => $email]));
+                return Redirect::to(Url::to('password/resetByMobile', ['mobile' => $email]));
             }
 
             Session::setFlash('message', '请输入正确邮箱');
