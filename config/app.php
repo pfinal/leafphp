@@ -14,6 +14,9 @@ $app->register(new \Leaf\Provider\QueueProvider());
 //如果开启路由缓存，则不支持使用闭包路由
 $app['route.cache'] = false;
 
+// 全局中间件
+$app['middleware'] = array_merge($app['middleware'], ['Middleware\CorsMiddleware']);
+
 //中间件
 $app['auth'] = 'Middleware\AuthMiddleware';
 $app['cors'] = 'Middleware\CorsMiddleware';

@@ -185,7 +185,7 @@ trait UploadTrait
      * @param Request $request
      * @return string
      */
-    public function fromMobile($request)
+    protected function fromMobile($request)
     {
         ///pc 生成二维码
         if ($request->get('action') == 'qrcode') {
