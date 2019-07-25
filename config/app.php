@@ -19,7 +19,6 @@ $app['middleware'] = array_merge($app['middleware'], ['Middleware\CorsMiddleware
 
 //中间件
 $app['auth'] = 'Middleware\AuthMiddleware';
-$app['cors'] = 'Middleware\CorsMiddleware';
 $app['csrf'] = 'Middleware\CsrfMiddleware';
 
 //模板中获取当前登录用户 {{app.user.username}}
