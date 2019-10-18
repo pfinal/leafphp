@@ -1,21 +1,18 @@
 <?php /** @noinspection ALL */
 
-use Exception;
-use Leaf\Application as App;
-
-$dbConfig = App::$app['db.config'];
+$dbConfig = \Leaf\Application::$app['db.config'];
 
 if (isset($dbConfig['dsn'])) {
     if (preg_match('/dbname=(.*)/', $dbConfig['dsn'], $matches)) {
         $dbConfig['database'] = $matches[1];
     } else {
-        throw new Exception('database error');
+        throw new \Exception('database error');
     }
 
     if (preg_match('/host=(.*?);/', $dbConfig['dsn'], $matches)) {
         $dbConfig['host'] = $matches[1];
     } else {
-        throw new Exception('host error');
+        throw new \Exception('host error');
     }
 }
 
