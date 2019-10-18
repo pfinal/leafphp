@@ -1,5 +1,7 @@
 <?php /** @noinspection ALL */
 
+//php console migrate:create Demo
+
 $dbConfig = \Leaf\Application::$app['db.config'];
 
 if (isset($dbConfig['dsn'])) {
