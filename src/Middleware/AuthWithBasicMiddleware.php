@@ -30,6 +30,14 @@ class AuthWithBasicMiddleware
 
     protected function checkUser($username, $password)
     {
+        if (empty($username) || empty($password)) {
+            return false;
+        }
+
+        if (getenv('HTTP_BASIC_AUTH_USER') === $username && getenv('HTTP_BASIC_AUTH_PASSWORD') === $password) {
+            return true;
+        }
+
         return false;
     }
 }
