@@ -14,8 +14,9 @@ if (file_exists(__DIR__ . '/../.env')) {
     \Dotenv\Dotenv::create(__DIR__ . '/../')->load();
 }
 
-//如果开启路由缓存，则不支持使用闭包路由
-$app['route.cache'] = false;
+$app['route.cache'] = false; // 如果开启路由缓存，则不支持使用闭包路由
+$app['debug'] = boolval(getenv('APP_DEBUG') ? getenv('APP_DEBUG') : '0');
+$app['env'] = getenv('APP_ENV') ? getenv('APP_ENV') : 'local';
 
 // 全局中间件
 $app['middleware'] = array_merge($app['middleware'], ['Middleware\CorsMiddleware']);
