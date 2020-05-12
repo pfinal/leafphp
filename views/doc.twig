@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>api doc</title>
+
+    <link href="{{ asset('doc/bootstrap-4/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('doc/docsearch.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('doc/docs.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('doc/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+
+    <style>
+
+        /* 表格内间距调小一些 */
+        .bd-content > table > tbody > tr > td, .bd-content > table > tbody > tr > th, .bd-content > table > tfoot > tr > td, .bd-content > table > tfoot > tr > th, .bd-content > table > thead > tr > td, .bd-content > table > thead > tr > th {
+            padding: 0.5rem;
+        }
+
+        .method-content table > tbody > tr > td,
+        .method-content table > tbody > tr > th,
+        .method-content table > tfoot > tr > td,
+        .method-content table > tfoot > tr > th,
+        .method-content table > thead > tr > td,
+        .method-content table > thead > tr > th {
+            padding: 8px;
+            line-height: 1.42857143;
+            vertical-align: top;
+            border-top: 1px solid #ddd;
+        }
+
+        .method-content table {
+            min-width: 500px;
+            margin-bottom: 20px;
+        }
+
+        .method-content table,
+        .method-content th,
+        .method-content td {
+            border: 1px solid #ddd;
+        }
+
+        .method-content h2 {
+            font-size: 20px;;
+        }
+
+        .method-content h3 {
+            font-size: 16px;
+            margin-top: 10px;
+        }
+    </style>
+
+</head>
+<body>
+<a id="skippy" class="sr-only sr-only-focusable" href="#content">
+    <div class="container">
+        <span class="skiplink-text">Skip to main content</span>
+    </div>
+</a>
+
+<header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
+    <a class="navbar-brand mr-0 mr-md-2" href="javascript:;" aria-label="Bootstrap">
+        {#<img src="http://www.ku52.cn/v2/img/logo.png" width="80">#}
+    </a>
+
+    <div class="navbar-nav-scroll">
+        <ul class="navbar-nav bd-navbar-nav flex-row">
+            <li class="nav-item">
+                <a class="nav-link active" href="">API文档</a>
+            </li>
+            {#<li class="nav-item">#}
+            {#<a class="nav-link" href="">数据字典</a>#}
+            {#</li>#}
+        </ul>
+    </div>
+
+    <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+        <li class="nav-item dropdown">
+            <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="bd-versions" data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false">
+                v1.0
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="bd-versions">
+                {#<a class="dropdown-item active" href="javascript:;">Latest (3.x)</a>#}
+                {#<a class="dropdown-item" href="javascript:;">v2.x</a>#}
+                <a class="dropdown-item" href="javascript:;">v1.x</a>
+            </div>
+        </li>
+    </ul>
+
+</header>
+
+
+<div class="container-fluid">
+    <div class="row flex-xl-nowrap">
+        <div class="col-12 col-md-3 col-xl-2 bd-sidebar">
+
+            <form class="bd-search d-flex align-items-center">
+                <input type="search" class="form-control" id="search-input" placeholder="Search..."
+                       aria-label="Search for..." autocomplete="off">
+                <button class="btn btn-link bd-search-docs-toggle d-md-none p-0 ml-3" type="button"
+                        data-toggle="collapse" data-target="#bd-docs-nav" aria-controls="bd-docs-nav"
+                        aria-expanded="false" aria-label="Toggle docs navigation">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 30 30" width="30" height="30"
+                         focusable="false"><title>Menu</title>
+                        <path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10"
+                              d="M4 7h22M4 15h22M4 23h22"/>
+                    </svg>
+                </button>
+            </form>
+
+            {#<nav class="collapse bd-links" id="bd-docs-nav">#}
+
+            {#{% for cat in categories %}#}
+            {#<div class="bd-toc-item {{ cat.name == app.request.get('category') ? 'active' : '' }}">#}
+            {#<a class="bd-toc-link" href="{{ url('api/doc', {category: cat.name}) }}">#}
+            {#{{ cat.title }}#}
+            {#</a>#}
+
+            {#<ul class="nav bd-sidenav ">#}
+            {#{% for subCat in cat.sub %}#}
+            {#<li class="bd-sidenav-active  {{ subCat.name == app.request.get('subCategory') ? 'active' : '' }}">#}
+            {#<a href="{{ url('api/doc', {category: cat.name, subCategory: subCat.name}) }}"> {{ loop.index }}#}
+            {#.{{ subCat.title }}</a>#}
+            {#</li>#}
+            {#{% endfor %}#}
+            {#</ul>#}
+            {#</div>#}
+            {#{% endfor %}#}
+            {#</nav>#}
+        </div>
+
+        {#<div class="d-none d-xl-block col-xl-2 bd-toc">#}
+        {#<ul class="section-nav">#}
+
+        {#<li class="toc-entry toc-h2"><a href="#">{{ current.title }}</a>#}
+        {#<ul>#}
+        {#{% for item in list %}#}
+        {#<li class="toc-entry toc-h3">#}
+        {#<a href="#class-{{ loop.index }}"> {{ loop.index }}. {{ item.title }}</a></li>#}
+        {#{% endfor %}#}
+        {#</ul>#}
+        {#</li>#}
+        {#</ul>#}
+        {#</div>#}
+
+
+        <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+
+            {#<h2>{{ current.title }}</h2>#}
+
+            {#{% if current.description is not empty %}#}
+            {#<div class="highlight">{{ current.description|raw }}</div>#}
+            {#{% endif %}#}
+
+            {#{% if list is not empty %}#}
+            {#<table class="table table-striped">#}
+            {#<thead>#}
+            {#<tr>#}
+            {#<th scope="col">#</th>#}
+            {#<th scope="col">Name</th>#}
+            {#<th scope="col">Title</th>#}
+            {#<th scope="col">Author</th>#}
+            {#<th scope="col">Version</th>#}
+            {#</tr>#}
+            {#</thead>#}
+            {#<tbody>#}
+
+            {#{% for item in list %}#}
+            {#<tr>#}
+            {#<th scope="row">{{ loop.index }}</th>#}
+            {#<td><a href="#class-{{ loop.index }}">{{ item.name }}</a></td>#}
+            {#<td>{{ item.title }}</td>#}
+            {#<td>{{ item.classDoc.author }}</td>#}
+            {#<td>{{ item.classDoc.version }}</td>#}
+            {#</tr>#}
+            {#{% endfor %}#}
+            {#</tbody>#}
+            {#</table>#}
+            {#{% endif %}#}
+
+            {% for item in list %}
+                {% set itemIndex = loop.index %}
+
+                <h3 id="class-{{ loop.index }}">{{ item.title }}</h3>
+
+                {#<p>#}
+                {#<code>{{ item.name }} #}{#<a target="_blank" href="{{ item.getFile }}"><span#}
+                {#class="badge badge-pill badge-primary">src</span></a>#}{#</code>#}
+                {#</p>#}
+
+                {% if item.classDoc.comment|trim is not empty %}
+                    <div class="highlight">{{ item.classDoc.comment|raw }}</div>
+                {% endif %}
+
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col" width="50">#</th>
+                        <th scope="col" width="250">Name</th>
+                        <th scope="col">Api</th>
+                        <th scope="col" width="50"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    {% for method in item.methodDocs %}
+                        <tr>
+                            <th scope="row">{{ loop.index }}</th>
+                            <td>{{ method.title }}</td>
+                            <td>{{ method.api }}</td>
+                            <td>
+                                {% if method.comment|trim is not empty or method.apiSuccess|trim is not empty  or method.apiError|trim is not empty or  method.apiParam is not empty %}
+                                    <button class="btn btn-primary btn-sm" type="button" data-toggle="collapse"
+                                            data-target="#{{ itemIndex }}.{{ method.title }}.{{ loop.index }}"
+                                            aria-expanded="false"
+                                            aria-controls="collapseExample">
+                                        <span class="fa fa-sort-down"></span>
+                                    </button>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        <tr class="method-content collapse" id="{{ itemIndex }}.{{ method.title }}.{{ loop.index }}">
+                            <td colspan="10">
+                                <div class="card card-body">
+
+                                    {% if method.comment|trim is not empty %}
+                                        <div><span class="badge badge-info">注解</span></div>
+                                        <div class="highlight">{{ method.comment|raw }}</div>
+                                    {% endif %}
+
+                                    {% if method.apiParam is not empty %}
+                                        <div>
+                                            <div><span class="badge badge-primary">请求参数</span></div>
+                                            <table class="table" style="margin:10px;">
+                                                <thead>
+                                                <tr>
+                                                    <th>Field</th>
+                                                    <th>Type</th>
+                                                    <th>Label</th>
+                                                    <th>Description</th>
+                                                    <th>Example</th>
+                                                </tr>
+                                                </thead>
+
+                                                <tbody>
+                                                {% for param in method.apiParam %}
+                                                    {% set oneParam =  item.parseParam(param) %}
+                                                    <tr>
+                                                        <td>{{ oneParam.field }}</td>
+                                                        <td>{{ oneParam.type }}</td>
+                                                        <td>{{ oneParam.label }}</td>
+                                                        <td>{{ oneParam.description|raw }}</td>
+                                                        <td>{{ oneParam.eg }}</td>
+                                                    </tr>
+                                                {% endfor %}
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+                                    {% endif %}
+
+                                    {% if method.apiSuccess|trim is not empty %}
+                                        <div><span class="badge badge-success">成功</span></div>
+                                        <div>
+                                            {{ method.apiSuccess|raw }}
+                                        </div>
+                                    {% endif %}
+
+                                    {% if method.apiError|trim is not empty %}
+
+                                        <div><span class="badge badge-warning">失败</span></div>
+                                        <div>
+                                            {{ method.apiError|raw }}
+                                        </div>
+                                    {% endif %}
+
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+            {% endfor %}
+
+
+        </main>
+    </div>
+</div>
+
+<script src="{{ asset('doc/jquery.slim.min.js') }}"></script>
+<script src="{{ asset('doc/popper.min.js') }}"></script>
+<script src="{{ asset('doc/bootstrap-4/dist/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('doc/docsearch.min.js') }}"></script>
+
+</body>
+</html>

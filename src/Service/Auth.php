@@ -4,7 +4,6 @@ namespace Service;
 
 use Entity\User;
 use Leaf\Auth\AuthManager;
-use Leaf\DB;
 
 class Auth extends AuthManager
 {

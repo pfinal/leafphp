@@ -25,7 +25,7 @@ $app['auth.base'] = 'Middleware\AuthWithBasicMiddleware';
 
 //数据库连接配置
 $app['db.config'] = array(
-    'host' => getenv('DB_HOST') ? getenv('DB_HOST') : 'localhost',
+    'host' => getenv('DB_HOST') ? getenv('DB_HOST') : '127.0.0.1',
     'database' => getenv('DB_DATABASE') ? getenv('DB_DATABASE') : 'test',
     'username' => getenv('DB_USERNAME') ? getenv('DB_USERNAME') : 'root',
     'password' => getenv('DB_PASSWORD') ? getenv('DB_PASSWORD') : '',

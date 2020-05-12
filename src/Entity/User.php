@@ -2,7 +2,6 @@
 
 namespace Entity;
 
-use Leaf\DB;
 use PFinal\Database\ModelTrait;
 
 /**
