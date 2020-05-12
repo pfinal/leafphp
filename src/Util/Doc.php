@@ -114,7 +114,7 @@ class Wrap
     {
         $doc = $this->parseClass($doc);
 
-        $method = isset($doc['Method']) ? strtolower($doc['Method']) : 'any';
+        $method = isset($doc['Method']) ? strtolower($doc['Method']) : 'get';
         unset($doc['Method']);
 
         $route = isset($doc['Route']) ? $doc['Route'] : '';
