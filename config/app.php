@@ -15,8 +15,6 @@ if (file_exists(__DIR__ . '/../.env')) {
     \Dotenv\Dotenv::create(__DIR__ . '/../')->load();
 }
 
-$app->registerBundle(new \AppBundle\AppBundle());
-
 //如果开启路由缓存，则不支持使用闭包路由
 $app['route.cache'] = false;
 
