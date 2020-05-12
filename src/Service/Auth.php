@@ -11,35 +11,12 @@ class Auth extends AuthManager
     /**
      * 通过id取回用户
      *
-     * @param  int $id
+     * @param int $id
      * @return User
      */
     protected static function retrieveById($id)
     {
-        return DB::table(User::tableName())->where(['status' => User::STATUS_ENABLE])->asEntity(User::className())->findByPk($id);
-    }
-
-    /**
-     * 通过token取回用户
-     *
-     * @param string $token
-     * @return User|null
-     */
-    public static function retrieveByToken($token)
-    {
-        return DB::table(User::tableName())->where('remember_token=?', [$token])->asEntity(User::className())->findOne();
-    }
-
-    /**
-     * 更新token
-     *
-     * @param int $userId
-     * @param string $token
-     * @return bool
-     */
-    public static function saveRememberToken($userId, $token)
-    {
-        return 1 == DB::table(User::tableName())->where('id=?', [$userId])->update(['remember_token' => $token]);
+        return User::where(['status' => User::STATUS_ENABLE])->findByPk($id);
     }
 
     /**

@@ -5,11 +5,10 @@ $app['path'] = dirname(__DIR__);
 
 $app->register(new \Leaf\Provider\LogServiceProvider());
 $app->register(new \Leaf\Provider\DatabaseServiceProvider());
-$app->register(new \Leaf\Provider\TwigServiceProvider());
-$app->register(new \Leaf\Provider\SessionProvider());
-$app->register(new \Leaf\Provider\CaptchaProvider());
 $app->register(new \Leaf\Provider\CacheProvider());
 $app->register(new \Leaf\Provider\QueueProvider());
+$app->register(new \Leaf\Provider\TwigServiceProvider());
+$app->register(new \Leaf\Provider\SessionProvider());
 
 if (file_exists(__DIR__ . '/../.env')) {
     \Dotenv\Dotenv::create(__DIR__ . '/../')->load();
@@ -22,16 +21,7 @@ $app['route.cache'] = false;
 $app['middleware'] = array_merge($app['middleware'], ['Middleware\CorsMiddleware']);
 
 //中间件
-$app['auth'] = 'Middleware\AuthMiddleware';
-$app['csrf'] = 'Middleware\CsrfMiddleware';
-
-//模板中获取当前登录用户 {{app.user.username}}
-$app['twig.app'] = $app->extend('twig.app', function ($twigApp, $app) {
-    $twigApp['user'] = function () {
-        return \Service\Auth::getUser();
-    };
-    return $twigApp;
-});
+$app['auth.base'] = 'Middleware\AuthWithBasicMiddleware';
 
 //数据库连接配置
 $app['db.config'] = array(

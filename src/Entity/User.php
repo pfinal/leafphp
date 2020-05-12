@@ -24,8 +24,8 @@ class User extends \Leaf\Auth\User
     use ModelTrait;
 
     //状态
-    const STATUS_ENABLE = 10;   // 有效
-    const STATUS_DISABLE = 20;  // 禁用
+    const STATUS_ENABLE = 1;   // 有效
+    const STATUS_DISABLE = 2;  // 禁用
 
     public static function labels()
     {
