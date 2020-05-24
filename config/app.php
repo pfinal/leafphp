@@ -22,7 +22,7 @@ $app['env'] = getenv('APP_ENV') ? getenv('APP_ENV') : 'local';
 $app['middleware'] = array_merge($app['middleware'], ['Middleware\CorsMiddleware']);
 
 //中间件
-$app['auth.base'] = 'Middleware\AuthWithBasicMiddleware';
+$app['auth.basic'] = 'Middleware\AuthWithBasicMiddleware';
 
 //数据库连接配置
 $app['db.config'] = array(
