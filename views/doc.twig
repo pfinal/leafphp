@@ -207,8 +207,8 @@
                     {% for method in item.methodDocs %}
                         <tr>
                             <th scope="row">{{ loop.index }}</th>
-                            <td>{{ method.title }}</td>
-                            <td>{{ method.api }}</td>
+                            <td>{{ method.title|default('') }}</td>
+                            <td>{{ method.api|default('') }}</td>
                             <td>
                                 {% if method.comment|trim is not empty or method.apiSuccess|trim is not empty  or method.apiError|trim is not empty or  method.apiParam is not empty %}
                                     <button class="btn btn-primary btn-sm" type="button" data-toggle="collapse"
