@@ -20,6 +20,7 @@ class CorsMiddleware
             'Access-Control-Max-Age' => 86400,  // 以秒为单位的缓存时间
         );
 
+        // 复杂请求会发送预检
         if ($request->isMethod('options')) {
             $response = new \Symfony\Component\HttpFoundation\Response();
 
