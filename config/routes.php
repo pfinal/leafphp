@@ -16,3 +16,4 @@ Route::get('/api//doc', function () {
 
     return \Util\Doc::makeDoc($controllers);
 });
+
