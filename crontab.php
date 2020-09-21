@@ -4,7 +4,7 @@
 //php crontab.php start -d
 //php crontab.php start status
 
-//composer require workerman/workerman
+// composer require workerman/workerman:3.*
 require_once __DIR__ . '/vendor/autoload.php';
 
 use Workerman\Worker;
@@ -17,8 +17,9 @@ $task = new Worker();
 
 $task->onWorkerStart = function ($task) {
 
-    //每60秒执行一次
+    // 每60秒执行一次
     Timer::add(60, function () {
+         // composer require mtdowling/cron-expression:1.*
         exec('php ' . __DIR__ . '/console crontab', $out);
     });
 };
