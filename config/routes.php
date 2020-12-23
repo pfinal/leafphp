@@ -7,7 +7,7 @@ Route::get('/', function () {
     return View::render('home.twig');
 });
 
-Route::get('/api//doc', function () {
+Route::get('/api/doc', function () {
 
     $controllers = array(
         'Util\Doc',
