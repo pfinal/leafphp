@@ -1,20 +1,20 @@
 {
     "name": "pfinal/leafphp",
     "require": {
-        "pfinal/leaf": "*",
-        "pfinal/cache": "*",
-        "cebe/markdown": "~1.0",
-        "league/flysystem": "~1.0",
-        "swiftmailer/swiftmailer":"5.*",
-        "myclabs/php-enum":"*",
-        "twig/twig": "1.*",
-        "pfinal/queue": "*",
-        "nesbot/carbon": "~1.0",
-        "robmorgan/phinx": "0.9.*",
+        "pfinal/leaf": "^2.6",
+        "pfinal/cache": "^1.2",
+        "cebe/markdown": "^1.0",
+        "league/flysystem": "^1.0",
+        "swiftmailer/swiftmailer":"^5.0",
+        "myclabs/php-enum":"^1.7",
+        "twig/twig": "^1.0",
+        "pfinal/queue": "^1.1",
+        "nesbot/carbon": "^1.0",
+        "robmorgan/phinx": "^0.9",
         "phpmyadmin/sql-parser": "^4.3",
-        "symfony/var-dumper": "*",
-        "symfony/event-dispatcher": "2.*|3.*",
-        "vlucas/phpdotenv": "3.*"
+        "symfony/var-dumper": "^3.0",
+        "symfony/event-dispatcher": "^2.0|^3.0",
+        "vlucas/phpdotenv": "^3.0"
     },
     "require-dev": {},
     "autoload": {
