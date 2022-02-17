@@ -6,7 +6,7 @@
         "cebe/markdown": "^1.0",
         "league/flysystem": "^1.0",
         "swiftmailer/swiftmailer":"^5.0",
-        "myclabs/php-enum":"^1.7",
+        "myclabs/php-enum":"^1.0",
         "twig/twig": "^1.0",
         "pfinal/queue": "^1.1",
         "nesbot/carbon": "^1.0",
